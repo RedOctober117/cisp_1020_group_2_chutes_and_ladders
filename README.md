@@ -45,6 +45,9 @@ chutes=16,6;47,26;49,11;56,53;62,19;64,60;93,73;95,75;98,78;
 
 Convert chutes and ladders squares into hashmaps with the sqaure as the key and the 4 cord possibilities as the values
 
+### Rule Set Parser
+Read the ruleset doc and provide the info to relevant objects.
+
 ### Commands
 `-c` -> List commands
 `-s` -> List scores from file
