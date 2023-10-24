@@ -7,23 +7,23 @@
 
 ### UI
 ```txt
-*************************************
-* Test 1 * Test 2 * Test 3 * Test 4 *
-*   40   *    1   *   65   *   34   *
-*************************************
+*************************
+* ABC * DEF * GHI * JKL *
+*  40 *   1 *  65 *  34 *
+*************************
 
- ___________________________________
-| Test 1 | Test 2 | Test 3 | Test 4 |
-|12345678|   01   |   34   |   32   |
+ _______________________
+| ABC | DEF | GHI | JKL |
+|  23 |  01 |  34 |  32 |
 |(-c for commands)? _               
 ```
 
 ### Scoring
-scoring for each rule set resides in a separate file
-rw file for storing all scores and identifiers, sorted ASC by score
-score is lower is better
+Scoring for each rule set resides in a separate file
+RW file for storing all scores and identifiers, sorted ASC by score
+Score is lower is better
 
-Scoring based on total number of rolls to reach sq99, add and deduct points for chutes and ladders 
+Scoring based on total number of rolls to reach sq99, add and deduct points for chutes and ladders respectively
 
 ```txt
 ABD 12
@@ -43,7 +43,7 @@ players=4
 chutes=16,6;47,26;49,11;56,53;62,19;64,60;93,73;95,75;98,78;
 ```
 
-convert chutes and ladders squares into hashmaps with the sqaure as the key and the 4 cord possibilities as the values
+Convert chutes and ladders squares into hashmaps with the sqaure as the key and the 4 cord possibilities as the values
 
 ### Commands
 `-c` -> List commands
