@@ -1,7 +1,10 @@
 // package chutes_and_ladders_rework;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class DrawBoard {
-    public static void drawBoard(){
+    public static void drawBoard(ArrayList<Coords> playerData){
         int dimension = 8;
         int horizontal_scalar = 6;
         int vertical_scalar = 3;
@@ -31,6 +34,13 @@ public class DrawBoard {
                         x++;
                     } else {
                         // another nested if here to loop through player cords
+                        for (Coords player : playerData) {
+                            if (player.getX() == x && player.getY() == y) {
+                                System.out.printf("%c", player.getFirstIdentifier());
+                                x++;
+                                break;
+                            }
+                        }
                         System.out.print(" ");
                         x++;
                     }
