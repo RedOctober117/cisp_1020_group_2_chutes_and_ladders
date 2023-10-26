@@ -12,6 +12,7 @@ public class DrawMenu {
     }
 
     public static void main(String[] args) {
-        drawMenu();
+        DrawBoard.drawBoard();
+        // drawMenu();
     }
 }
