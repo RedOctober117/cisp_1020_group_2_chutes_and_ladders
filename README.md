@@ -2,6 +2,8 @@
 ### Error Handling
 `UnknownCommandException` -> Print command list and wait for new input
 
+### Interfaces
+File parser interface
 
 ## Design Concepts
 
