@@ -10,7 +10,7 @@
 ### IO Classes
 - FileParser Interface -> Common methods for parsing any files
 - Scoreboard Class -> Implement FileParser; Write and read score files from given rule set
-- RuleSet Class -> Implement FileParser; Read (and maybe write?) ruleset files
+- RuleSet Class -> Implement FileParser; Read (and maybe write?) and represent ruleset files
 
 ### Error Handling
 `UnknownCommandException` -> Print command list and wait for new input
