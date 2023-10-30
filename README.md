@@ -1,4 +1,17 @@
 ## Class Layout
+### Game Classes
+Board Class -> Print the board and player tokens
+Player Class -> Maintain player 3-letter identifier and store Coords, Score object
+Coords Class -> Store and manipulate x and y values
+Score Class -> Calculate and maintain player score
+Dice Class -> Roll dice and display art for result
+ChutesAndLadders Class -> Main game logic
+
+### IO Classes
+FileParser Interface -> Common methods for parsing any files
+Scoreboard Class -> Implement FileParser; Write and read score files from given rule set
+RuleSet Class -> Implement FileParser; Read (and maybe write?) ruleset files
+
 ### Error Handling
 `UnknownCommandException` -> Print command list and wait for new input
 
