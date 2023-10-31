@@ -1,24 +1,24 @@
 ## Class Layout
 ### Game Classes
-- Load Class -> Not sure the full scope yet. Needs to work with RuleSet to allow user to choose the rule set at least
-- Board Class -> Print the board and player tokens
-- Menu Class -> Print current scores for each player
-- Player Class -> Maintain player 3-letter identifier and store Coords, Score object
-- Coords Class -> Store and manipulate x and y values
-- Score Class -> Calculate and maintain player score
-- Dice Class -> Roll dice and display art for result
+- Bruce: Load Class -> Not sure the full scope yet. Needs to work with RuleSet to allow user to choose the rule set at least
+- Bruce: Board Class -> Print the board and player tokens
+- Michael: Menu Class -> Print current scores for each player
+- Levi: Player Class -> Maintain player 3-letter identifier and store Coords, Score object
+- Ryan: Coords Class -> Store and manipulate x and y values
+- Ryan: Score Class -> Calculate and maintain player score
+- Orion: Dice Class -> Roll dice and display art for result
 - ChutesAndLadders Class -> Main game logic
 
 ### IO Classes
-- FileParser Interface -> Common methods for parsing any files
-- Scoreboard Class -> Implement FileParser; Write and read score files from given rule set
-- RuleSet Class -> Implement FileParser; Read (and maybe write?) and represent ruleset files
+- Bruce, Michael: FileParser Interface -> Common methods for parsing any files
+- Bruce, Michael: Scoreboard Class -> Implement FileParser; Write and read score files from given rule set
+- Bruce, Michael: RuleSet Class -> Implement FileParser; Read (and maybe write?) and represent ruleset files
 
 ### Error Handling
-`UnknownCommandException` -> Print command list and wait for new input
+- Bruce: `UnknownCommandException` -> Print command list and wait for new input
 
 ### Interfaces
-File parser interface
+- Bruce: File parser interface
 
 #### Player
 Instance vars:
