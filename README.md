@@ -20,6 +20,26 @@
 ### Interfaces
 File parser interface
 
+#### Player
+Instance vars:
+- Identifier: String 
+- Coordinates: Coords
+
+#### Coords
+Instance vars:
+- playerX: int
+- playerY: int
+
+#### Score
+Instance vars:
+- Score Data: HashMap<PlayerNumber, Integer>
+
+#### Dice
+Methods:
+- RollDice(num_of_dice): int 
+- AnimateDice(num_of_dice, roll): void 
+
+
 ## Design Concepts
 
 ### UI
