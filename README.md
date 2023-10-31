@@ -1,6 +1,8 @@
 ## Class Layout
 ### Game Classes
+- Load Class -> Not sure the full scope yet. Needs to work with RuleSet to allow user to choose the rule set at least
 - Board Class -> Print the board and player tokens
+- Menu Class -> Print current scores for each player
 - Player Class -> Maintain player 3-letter identifier and store Coords, Score object
 - Coords Class -> Store and manipulate x and y values
 - Score Class -> Calculate and maintain player score
