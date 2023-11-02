@@ -2,7 +2,6 @@
 
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class DrawMenu {
     public static void drawMenu(/* UserInput obj here */){
@@ -20,7 +19,7 @@ public class DrawMenu {
       playerData.add(new Coords(2, 23, Coords.buildIdentifier('g', 'b', 'c')));
       playerData.add(new Coords(4, 23, Coords.buildIdentifier('j', 'b', 'c')));
 
-      DrawBoard.drawBoard(playerData);
+      Board.drawBoard(playerData);
       System.out.println(playerData);
       // drawMenu();
     }
