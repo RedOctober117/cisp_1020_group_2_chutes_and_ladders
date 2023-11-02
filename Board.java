@@ -10,6 +10,21 @@ public class Board {
         generateSquares(rules);
     }
 
+    public void movePlayer(Player player, int squareNumbr) {
+        for (Square sq : squares) {
+            if (sq.getPlayers().contains(player)) {
+                sq.removePlayer(player);
+            }
+        }
+        squares.get(squareNumbr - 1).addPlayer(player);
+    }
+
+    public void addPlayers(ArrayList<Player> players) {
+        for (Player player : players) {
+            squares.get(0).addPlayer(player);
+        }
+    }
+
     private void generateSquares(RuleSet rules) {
         for (int i = 1; i <= Math.pow(rules.getDimension(), 2); i++) {
             this.squares.add(new Square(i, rules));
