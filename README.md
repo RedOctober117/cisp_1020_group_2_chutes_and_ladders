@@ -39,6 +39,9 @@ Methods:
 - RollDice(num_of_dice): int 
 - AnimateDice(num_of_dice, roll): void 
 
+#### Event
+- source: int
+- destination: int
 
 ## Design Concepts
 

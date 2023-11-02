@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 import java.util.TreeMap;
 
-import javax.swing.text.html.Option;
-
 public class Square {
   private int squareNumber;
   private ArrayList<Player> players;
@@ -59,17 +57,21 @@ public class Square {
 
   private static int square_to_x(int squareNumber, int playerIndex, int boardDimension) {
     int effective_space = squareNumber;
-    if (squareNumber > boardDimension) {
-      if ((int)(squareNumber / boardDimension) % boardDimension == 0) {
-        effective_space = boardDimension;
-      } else {
-        if ((int)(squareNumber / boardDimension) % 2 == 0) {
-          effective_space = effective_space - boardDimension * (int)(effective_space / boardDimension);
-        } else {
-          effective_space = (((int)(effective_space / boardDimension) * boardDimension) + boardDimension) - (effective_space - 1);
-        }
+    if (effective_space > boardDimension) {
+      if (effective_space == Math.pow(boardDimension, 2)) {
+        effective_space = 1;
       }
+        if (effective_space % boardDimension == 0) {
+          effective_space = boardDimension;
+        } else {
+          if ((int)(effective_space / boardDimension) % 2 == 0) {
+            effective_space = effective_space - boardDimension * (int)(effective_space / boardDimension);
+          } else {
+            effective_space = (((int)(effective_space / boardDimension) * boardDimension) + boardDimension) - (effective_space - 1);
+          }
+        }
     }
+    System.out.println(effective_space);
     if (playerIndex == 1 | playerIndex == 3) {
       return effective_space * 6 - 4;
     } else {

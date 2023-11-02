@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Prototype {
     public static void main(String[] args) {
-        RuleSet rules = new RuleSet("default", 10, 4, 1, 0, new ArrayList<Integer>(), new ArrayList<Integer>());
+        RuleSet rules = new RuleSet("default", 8, 4, 1, 0, new ArrayList<Integer>(), new ArrayList<Integer>());
         Board b1 = new Board(rules);
         System.out.println(b1.getSquares());
 
@@ -35,9 +35,12 @@ public class Prototype {
         //     System.out.println(p);
         // }
 
-        b1.movePlayer(players.get(3), 2);
+        b1.movePlayer(players.get(3), 64);
         b1.drawBoard(rules);
-        System.out.println(b1.getSquareInformation(1));
-        System.out.println(b1.getPlayerCoords(1));
+        for (Square square : b1.getSquares()) {
+            if (square.hasPlayers()) {
+                System.out.printf("Square: %d\n%s\n", square.getNumber(), square.getPlayers());
+            }
+        }
     }
 }
