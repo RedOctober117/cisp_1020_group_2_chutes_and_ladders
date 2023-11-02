@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.TreeMap;
 
 import javax.swing.text.html.Option;
 
@@ -12,6 +13,10 @@ public class Square {
     this.coords = new ArrayList<Coords>();
     this.players = new ArrayList<Player>();
     generateCoords(rules);
+  }
+
+  public boolean hasPlayers() {
+    return !players.isEmpty();
   }
 
   public void addPlayer(Player player) {
@@ -30,14 +35,22 @@ public class Square {
     return this.squareNumber;
   }
 
+  public TreeMap<Player, Coords> getPlayerCoords() {
+    TreeMap<Player, Coords> playerCoordsPairing = new TreeMap<>();
+    for (Player player : players) {
+      playerCoordsPairing.put(player, coords.get(player.getIndex() - 1));
+    }
+    return playerCoordsPairing;
+  }
+
   private void generateCoords(RuleSet rules) {
     for (int i = 0; i < 4; i++) {
       this.coords.add(new Coords(square_to_x(this.squareNumber, i + 1, rules.getDimension()), square_to_y(this.squareNumber, i + 1, rules.getDimension())));
     }
   }
 
-  public Coords getCoords(int index) {
-    return this.coords.get(index);
+  public ArrayList<Coords> getCoords() {
+    return this.coords;
   }
 
   public String getSquareCoordinates() {
@@ -66,7 +79,7 @@ public class Square {
 
   private static int square_to_y(int squareNumber, int playerIndex, int boardDimension) {
     ArrayList<Integer> indexCollection1 = new ArrayList<>();
-    int indexCounter = 0;
+    int indexCounter = 1;
     while (indexCounter < boardDimension * 3) {
       indexCollection1.add(indexCounter);
       indexCounter += 3;

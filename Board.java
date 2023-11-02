@@ -1,6 +1,7 @@
 // package chutes_and_ladders_rework;
 
 import java.util.ArrayList;
+import java.util.TreeMap;
 
 public class Board {
     private ArrayList<Square> squares;
@@ -43,8 +44,12 @@ public class Board {
         return squares.get(index - 1).getSquareCoordinates();
     }
 
-    public static void drawBoard(ArrayList<Player> playerData){
-        int dimension = 8;
+    public TreeMap<Player, Coords> getPlayerCoords(int squareNumber) {
+        return squares.get(squareNumber - 1).getPlayerCoords();
+    }
+
+    public void drawBoard(RuleSet rules){
+        int dimension = rules.getDimension();
         int horizontal_scalar = 6;
         int vertical_scalar = 3;
 
@@ -73,12 +78,26 @@ public class Board {
                         x++;
                     } else {
                         // another nested if here to loop through player cords
-                        for (Coords player : playerData) {
-                            if (player.getX() == x && player.getY() == y) {
-                                System.out.printf("%c", player.getFirstIdentifier());
-                                x++;
-                                break;
+                        for (Square square : this.squares) {
+                            if (square.hasPlayers()) {
+                                TreeMap<Player, Coords> playerData = square.getPlayerCoords();
+                                for (Player player : playerData.keySet()) {
+                                    if (playerData.get(player).getX() == x & playerData.get(player).getY() == y) {
+                                        System.out.printf("%d", player.getIndex());
+                                        x++;
+                                        break;
+                                    }
+                                }
                             }
+                            // if (square.hasPlayers()) {
+                            //     for (Player player : square.getPlayers()) {
+                            //         if (square.getCoords().get(player.getIndex() - 1).getX() == x && square.getCoords().get(player.getIndex() - 1).getY() == y) {
+                            //             System.out.printf("%d", player.getIndex());
+                            //             x++;
+                            //             break;
+                            //         }
+                            //     }
+                            // }
                         }
                         System.out.print(" ");
                         x++;

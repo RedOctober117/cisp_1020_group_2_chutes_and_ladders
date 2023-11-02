@@ -1,4 +1,4 @@
-public class Player {
+public class Player implements Comparable {
     private String identifier;
     private int index;
 
@@ -25,6 +25,18 @@ public class Player {
         return false;
     } 
 
+    @Override
+    public int compareTo(Object o) {
+        if (o instanceof Player) {
+            Player obj = (Player)o;
+            if (this.index < obj.getIndex()) {
+                return -1;
+            } else if (this.index > obj.getIndex()) {
+                return 1;
+            }
+        }
+        return 0;
+    }
     @Override
     public String toString() {
         return String.format("{{Identifier: \"%s\"} {Index: %d}}", this.identifier, this.index);

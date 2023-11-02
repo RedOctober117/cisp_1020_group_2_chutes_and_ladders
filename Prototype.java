@@ -13,25 +13,31 @@ public class Prototype {
         players.add(new Player("JKL", 4));
 
         b1.addPlayers(players);
+        // System.out.println(b1.getSquareInformation(1));
+        // System.out.println(b1.getSquareReference(1).getPlayers());
+        System.out.println(b1.getPlayerCoords(1));
+        // int squareIndex = 1;
+        // System.out.printf("Square %d:\n", squareIndex);
+        // for (Player p : b1.getSquareReference(squareIndex).getPlayers()) {
+        //     System.out.println(p);
+        // }
+
+        // squareIndex = 100;
+        // b1.movePlayer(players.get(0), 99);
+        // System.out.printf("Square %d:\n", squareIndex);
+        // for (Player p : b1.getSquareReference(squareIndex).getPlayers()) {
+        //     System.out.println(p);
+        // }
+
+        // squareIndex = 1;
+        // System.out.printf("Square %d:\n", squareIndex);
+        // for (Player p : b1.getSquareReference(squareIndex).getPlayers()) {
+        //     System.out.println(p);
+        // }
+
+        b1.movePlayer(players.get(3), 2);
+        b1.drawBoard(rules);
         System.out.println(b1.getSquareInformation(1));
-
-        int squareIndex = 1;
-        System.out.printf("Square %d:\n", squareIndex);
-        for (Player p : b1.getSquareReference(squareIndex).getPlayers()) {
-            System.out.println(p);
-        }
-
-        squareIndex = 2;
-        b1.movePlayer(players.get(0), 2);
-        System.out.printf("Square %d:\n", squareIndex);
-        for (Player p : b1.getSquareReference(squareIndex).getPlayers()) {
-            System.out.println(p);
-        }
-
-        squareIndex = 1;
-        System.out.printf("Square %d:\n", squareIndex);
-        for (Player p : b1.getSquareReference(squareIndex).getPlayers()) {
-            System.out.println(p);
-        }
+        System.out.println(b1.getPlayerCoords(1));
     }
 }
