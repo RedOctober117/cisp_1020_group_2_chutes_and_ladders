@@ -13,6 +13,14 @@ public class Square {
     generateCoords(rules);
   }
 
+  public int getNumber() {
+    return this.squareNumber;
+  }
+
+  public ArrayList<Coords> getCoords() {
+    return this.coords;
+  }
+
   public boolean hasPlayers() {
     return !players.isEmpty();
   }
@@ -21,16 +29,18 @@ public class Square {
     players.add(player);
   }
 
-  public ArrayList<Player> getPlayers() {
-    return this.players;
-  }
-
   public void removePlayer(Player player) {
     players.remove(player);
   }
 
-  public int getNumber() {
-    return this.squareNumber;
+  public ArrayList<Player> getPlayers() {
+    return this.players;
+  }
+
+  private void generateCoords(RuleSet rules) {
+    for (int i = 0; i < 4; i++) {
+      this.coords.add(new Coords(square_to_x(this.squareNumber, i + 1, rules.getDimension()), square_to_y(this.squareNumber, i + 1, rules.getDimension())));
+    }
   }
 
   public TreeMap<Player, Coords> getPlayerCoords() {
@@ -41,16 +51,6 @@ public class Square {
     return playerCoordsPairing;
   }
 
-  private void generateCoords(RuleSet rules) {
-    for (int i = 0; i < 4; i++) {
-      this.coords.add(new Coords(square_to_x(this.squareNumber, i + 1, rules.getDimension()), square_to_y(this.squareNumber, i + 1, rules.getDimension())));
-    }
-  }
-
-  public ArrayList<Coords> getCoords() {
-    return this.coords;
-  }
-
   public String getSquareCoordinates() {
     return String.format("%s %s\n%s %s", coords.get(0), coords.get(1), coords.get(2), coords.get(3));
   }
@@ -58,7 +58,7 @@ public class Square {
   private static int square_to_x(int squareNumber, int playerIndex, int boardDimension) {
     int effective_space = squareNumber;
     if (effective_space > boardDimension) {
-      if (effective_space == Math.pow(boardDimension, 2)) {
+      if (effective_space % boardDimension == 0 & (effective_space / boardDimension) % 2 == 0) {
         effective_space = 1;
       }
         if (effective_space % boardDimension == 0) {
@@ -71,7 +71,6 @@ public class Square {
           }
         }
     }
-    System.out.println(effective_space);
     if (playerIndex == 1 | playerIndex == 3) {
       return effective_space * 6 - 4;
     } else {
@@ -95,7 +94,10 @@ public class Square {
     }
 
     int sector = boardDimension - ((int)(squareNumber / boardDimension));
-
+    if (squareNumber % boardDimension == 0) {
+      sector++;
+    }
+    
     if (sector == 0) {
       sector++;
     }

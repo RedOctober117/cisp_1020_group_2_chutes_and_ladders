@@ -1,0 +1,14 @@
+@startuml
+class Board
+class Square
+class Player
+class Coords
+class RuleSet
+
+Board o-- "1..*" Square 
+Square *-- "1..4" Coords 
+Square *-- "0..*" Player : reference
+RuleSet <-- Board : reference
+Board --> Player : reference
+
+@enduml

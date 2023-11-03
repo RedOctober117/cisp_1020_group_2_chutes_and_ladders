@@ -1,5 +1,3 @@
-// package chutes_and_ladders_rework;
-
 import java.util.ArrayList;
 import java.util.TreeMap;
 
@@ -11,21 +9,6 @@ public class Board {
         generateSquares(rules);
     }
 
-    public void movePlayer(Player player, int squareNumbr) {
-        for (Square sq : squares) {
-            if (sq.getPlayers().contains(player)) {
-                sq.removePlayer(player);
-            }
-        }
-        squares.get(squareNumbr - 1).addPlayer(player);
-    }
-
-    public void addPlayers(ArrayList<Player> players) {
-        for (Player player : players) {
-            squares.get(0).addPlayer(player);
-        }
-    }
-
     private void generateSquares(RuleSet rules) {
         for (int i = 1; i <= Math.pow(rules.getDimension(), 2); i++) {
             this.squares.add(new Square(i, rules));
@@ -34,6 +17,21 @@ public class Board {
 
     public ArrayList<Square> getSquares() {
         return this.squares;
+    }
+    
+    public void addPlayers(ArrayList<Player> players) {
+        for (Player player : players) {
+            squares.get(0).addPlayer(player);
+        }
+    }
+
+    public void movePlayer(Player player, int squareNumbr) {
+        for (Square sq : squares) {
+            if (sq.getPlayers().contains(player)) {
+                sq.removePlayer(player);
+            }
+        }
+        squares.get(squareNumbr - 1).addPlayer(player);
     }
 
     public Square getSquareReference(int index) {
@@ -50,8 +48,12 @@ public class Board {
 
     public void drawBoard(RuleSet rules){
         int dimension = rules.getDimension();
-        int horizontal_scalar = 6;
-        int vertical_scalar = 3;
+        final int horizontal_scalar = 6;
+        final int vertical_scalar = 3;
+
+        final String border = "\u001B[35m*\u001B[0m";
+        final String ANSI_BORDER_COLOR_START = "\u001B[35m";
+        final String ANSI_RESET = "\u001B[0m";
 
         int scaled_horizontal_dimension = (dimension * horizontal_scalar) + 1;
         int scaled_vertical_dimension = (dimension * vertical_scalar) + 1;
@@ -65,7 +67,7 @@ public class Board {
                     if (x == scaled_horizontal_dimension) {
                         break;
                     }
-                    System.out.print("*");
+                    System.out.print(border);
                     x++;
                 }
             } else {
@@ -74,7 +76,7 @@ public class Board {
                         break;
                     }
                     if (x % horizontal_scalar == 0 || x == 0) {
-                        System.out.print("*");
+                        System.out.print(border);
                         x++;
                     } else {
                         // another nested if here to loop through player cords
@@ -83,7 +85,7 @@ public class Board {
                                 TreeMap<Player, Coords> playerData = square.getPlayerCoords();
                                 for (Player player : playerData.keySet()) {
                                     if (playerData.get(player).getX() == x & playerData.get(player).getY() == y) {
-                                        System.out.printf("%d", player.getIndex());
+                                        System.out.printf("%s%d%s", player.getColor(), player.getIndex(), Player.ASCII_RESET);
                                         x++;
                                         break;
                                     }
