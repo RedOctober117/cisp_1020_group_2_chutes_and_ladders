@@ -1,10 +1,9 @@
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeUnit;
 
 public class Prototype {
     public static void main(String[] args) throws InterruptedException {
-        RuleSet rules = new RuleSet("default", 11, 4, 1, 0, new ArrayList<Integer>(), new ArrayList<Integer>());
+        RuleSet rules = new RuleSet("default", 10, 4, 1, 0, new ArrayList<Integer>(), new ArrayList<Integer>());
         Board b1 = new Board(rules);
         // System.out.println(b1.getSquares());
 
