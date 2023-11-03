@@ -16,7 +16,7 @@ public class Square {
   public int getNumber() {
     return this.squareNumber;
   }
-
+                 
   public ArrayList<Coords> getCoords() {
     return this.coords;
   }

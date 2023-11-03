@@ -52,8 +52,6 @@ public class Board {
         final int vertical_scalar = 3;
 
         final String border = "\u001B[35m*\u001B[0m";
-        final String ANSI_BORDER_COLOR_START = "\u001B[35m";
-        final String ANSI_RESET = "\u001B[0m";
 
         int scaled_horizontal_dimension = (dimension * horizontal_scalar) + 1;
         int scaled_vertical_dimension = (dimension * vertical_scalar) + 1;
@@ -79,27 +77,29 @@ public class Board {
                         System.out.print(border);
                         x++;
                     } else {
-                        // another nested if here to loop through player cords
                         for (Square square : this.squares) {
                             if (square.hasPlayers()) {
                                 TreeMap<Player, Coords> playerData = square.getPlayerCoords();
                                 for (Player player : playerData.keySet()) {
                                     if (playerData.get(player).getX() == x & playerData.get(player).getY() == y) {
-                                        System.out.printf("%s%d%s", player.getColor(), player.getIndex(), Player.ASCII_RESET);
-                                        x++;
-                                        break;
+                                        boolean found = false;
+                                        for (PlayerTrait<?> trait : player.getTraits()) {
+                                            if (trait instanceof Identifier) {
+                                                Identifier convertedTrait = (Identifier) trait;
+                                                found = true;
+                                                System.out.printf("%s%d%s", convertedTrait.getColor(), player.getIndex(), Identifier.ASCII_RESET);
+                                                x++;
+                                                break;
+                                            }
+                                        }
+                                        if (!found){
+                                            System.out.printf("%d", player.getIndex());
+                                            x++;
+                                            break;
+                                        }
                                     }
                                 }
                             }
-                            // if (square.hasPlayers()) {
-                            //     for (Player player : square.getPlayers()) {
-                            //         if (square.getCoords().get(player.getIndex() - 1).getX() == x && square.getCoords().get(player.getIndex() - 1).getY() == y) {
-                            //             System.out.printf("%d", player.getIndex());
-                            //             x++;
-                            //             break;
-                            //         }
-                            //     }
-                            // }
                         }
                         System.out.print(" ");
                         x++;

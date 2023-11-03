@@ -12,8 +12,9 @@ public class Prototype {
         players.add(new Player("DEF", 2));
         players.add(new Player("GHI", 3));
         players.add(new Player("JKL", 4));
-
         b1.addPlayers(players);
+        players.get(0).addTrait(new Identifier("DBC"));
+        // System.out.println(players.get(0));
 
         int delay = 250;
 
@@ -69,48 +70,5 @@ public class Prototype {
             count++;
             TimeUnit.MILLISECONDS.sleep(delay);
         }
-
-        // System.out.println(b1.getSquareInformation(91));
-        // System.out.println();
-        // System.out.println(b1.getSquareInformation(90));
-        // System.out.println();
-        // System.out.println(b1.getSquareInformation(71));
-        // System.out.println();
-        // System.out.println(b1.getSquareInformation(70));
-        // System.out.println();
-        // System.out.println(b1.getSquareInformation(51));
-        // System.out.println();
-        // System.out.println(b1.getSquareInformation(50));
-        // System.out.println();
-        // System.out.println(b1.getSquareInformation(31));
-        // System.out.println();
-        // System.out.println(b1.getSquareInformation(30));
-        // System.out.println();
-        // System.out.println(b1.getSquareInformation(11));
-        // System.out.println();
-        // System.out.println(b1.getSquareInformation(10));
-        // System.out.println();
-        // System.out.println();
-        
-
-        // System.out.println(b1.getSquareInformation(100));
-        // System.out.println();
-        // System.out.println(b1.getSquareInformation(81));
-        // System.out.println();
-        // System.out.println(b1.getSquareInformation(80));
-        // System.out.println();
-        // System.out.println(b1.getSquareInformation(61));
-        // System.out.println();
-        // System.out.println(b1.getSquareInformation(60));
-        // System.out.println();
-        // System.out.println(b1.getSquareInformation(41));
-        // System.out.println();
-        // System.out.println(b1.getSquareInformation(40));
-        // System.out.println();
-        // System.out.println(b1.getSquareInformation(21));
-        // System.out.println();
-        // System.out.println(b1.getSquareInformation(20));
-        // System.out.println();
-        // System.out.println(b1.getSquareInformation(1));
     }
 }

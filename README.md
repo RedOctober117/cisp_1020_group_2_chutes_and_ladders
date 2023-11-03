@@ -1,8 +1,12 @@
 # Trait System
 
 ```java
-public interface PlayerTrait {
+abstract class PlayerTrait {
     private Player playerReference;
+
+    public void setPlayerReference(Player player) {
+        this.playerReference = player;
+    }
 }
 
 public class Score implements PlayerTrait {
@@ -19,7 +23,7 @@ public class Score implements PlayerTrait {
 public class Player {
     private ArrayList<PlayerTrait> playerTraits;
 
-    public void addTraits(PlayerTrait trait) {
+    public void addTrait(PlayerTrait trait) {
         playerTraits.add(trait);
     }
 
