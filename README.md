@@ -1,3 +1,43 @@
+# Trait System
+
+```java
+public interface PlayerTrait {
+    private Player playerReference;
+}
+
+public class Score implements PlayerTrait {
+    private Player playerReference;
+    private int playerScore;
+
+    public Score(Player playerReference) {}
+
+    public void setScore(int score) {}
+
+    public int getScore() {}
+}
+
+public class Player {
+    private ArrayList<PlayerTrait> playerTraits;
+
+    public void addTraits(PlayerTrait trait) {
+        playerTraits.add(trait);
+    }
+
+    public ArrayList<PlayerTrait> getTraits() {}
+}
+
+public static void main(String[] args) {
+    Player p1 = new Player();
+    Score p1Score = new Score(p1);
+    for (PlayerTrait trait : p1.getTraits()) {
+        if (trait instanceof Score) {
+            trait.setScore(1);
+        }
+    }
+}
+```
+
+
 ## Class Layout
 ### Game Classes
 - Bruce: Load Class -> Not sure the full scope yet. Needs to work with RuleSet to allow user to choose the rule set at least
@@ -96,3 +136,5 @@ Read the ruleset doc and provide the info to relevant objects.
 `-rr` -> Reset to menu (prompt for confirmation first)
 `-rn` -> Rename Player (will not interact with scores file, only active players)
 `-z` -> Zoom in on player (prompt for player identifier, then expand that square, showing the token of each present player)
+
+
