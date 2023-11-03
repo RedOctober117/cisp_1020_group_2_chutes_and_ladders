@@ -4,7 +4,7 @@ public class Player implements Comparable<Object> {
     private int index;
     private ArrayList<PlayerTrait<?>> traits;
 
-    public Player(String ident, int index) {
+    public Player(int index) {
         this.index = index;
         this.traits = new ArrayList<>();
     }

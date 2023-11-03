@@ -1,43 +1,38 @@
 # Trait System
 
 ```java
-abstract class PlayerTrait {
-    private Player playerReference;
+public interface PlayerTrait<E> {
+    public E getTraitValue();
+    public void setTraitValue(E value);
+}
 
-    public void setPlayerReference(Player player) {
-        this.playerReference = player;
+public class Identifier implements PlayerTrait<String> {
+    private String identifier;
+
+    public Identifier(String identifier) {}
+
+    public void setIdentifier(String ident) {}
+    public String getIdentifier() {}
+
+    public String getTraitValue() {
+        return getIdentifier();
     }
-}
 
-public class Score implements PlayerTrait {
-    private Player playerReference;
-    private int playerScore;
-
-    public Score(Player playerReference) {}
-
-    public void setScore(int score) {}
-
-    public int getScore() {}
-}
+    public void setTraitValue(String identifier) {
+        setIdentifier(identifier);
+    }
 
 public class Player {
-    private ArrayList<PlayerTrait> playerTraits;
+    private ArrayList<PlayerTrait> traits;
 
-    public void addTrait(PlayerTrait trait) {
-        playerTraits.add(trait);
-    }
-
-    public ArrayList<PlayerTrait> getTraits() {}
+    public void addTrait(PlayerTrait trait) {}
+    public void removeTrait(PlayerTrait trait) {}
 }
 
 public static void main(String[] args) {
-    Player p1 = new Player();
-    Score p1Score = new Score(p1);
-    for (PlayerTrait trait : p1.getTraits()) {
-        if (trait instanceof Score) {
-            trait.setScore(1);
-        }
-    }
+    Player p1 = new Player(1);
+    p1.addTrait(new Identifier("ABC"));
+}
 }
 ```
 

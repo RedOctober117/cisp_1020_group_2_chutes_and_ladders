@@ -8,10 +8,10 @@ public class Prototype {
         // System.out.println(b1.getSquares());
 
         ArrayList<Player> players = new ArrayList<>();
-        players.add(new Player("ABC", 1));
-        players.add(new Player("DEF", 2));
-        players.add(new Player("GHI", 3));
-        players.add(new Player("JKL", 4));
+        players.add(new Player(1));
+        players.add(new Player(2));
+        players.add(new Player(3));
+        players.add(new Player(4));
         b1.addPlayers(players);
         players.get(0).addTrait(new Identifier("DBC"));
         // System.out.println(players.get(0));
