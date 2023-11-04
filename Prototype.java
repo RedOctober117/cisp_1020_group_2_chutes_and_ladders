@@ -15,9 +15,9 @@ public class Prototype {
         b1.addPlayers(players);
         players.get(0).addTrait(new Identifier("DBC"));
         // System.out.println(players.get(0));
-
+        
         int delay = 250;
-
+        
         int count = 1;
         while (count <= Math.pow(rules.getDimension(), 2)) {
             b1.movePlayer(players.get(0), count);
@@ -29,6 +29,13 @@ public class Prototype {
             }
             count++;
             TimeUnit.MILLISECONDS.sleep(delay);
+        }
+        
+        for (PlayerTrait<?> trait : players.get(0).getTraits()) {
+            if (trait instanceof Identifier) {
+                players.get(0).removeTrait((Identifier)trait);
+                break;
+            }
         }
 
         count = 2;

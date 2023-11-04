@@ -1,4 +1,56 @@
 # Trait System
+Welcome to the Chutes and Ladders Trait System! The trait system allows for arbitrary "traits" to be added or removed from a given player, at any time!*. The system is easy, every trait implements `PlayerTrait`, which enforces the `getTraitValue()` and `setTraitValue()` methods. Let's take a look at an example:
+```java
+public class Identifier implements PlayerTrait<String> {
+    private String identifier;
+
+    public Identifier(String identifier) {
+        this.identifier = identifier;    
+    }
+
+    public void setTraitValue(String identifier) {
+        setIdentifier(identifier);
+    }
+    
+    public String getTraitValue() {
+        return getIdentifier();
+    }
+
+    public void setIdentifier(String identifier) {
+        this.identifier = identifier;
+    }
+
+    public String getIdentifier() {
+        return this.identifier;
+    }
+
+    @Overrider 
+    public String toString() {
+        return String.format("{{Trait: %s} {Identifier: %s}}", getClass(), this.identifier");
+    }
+}
+```
+
+First, notice the first lines `<String>`. The PlayerTrait system works for all types, so for whatever data you're wanting to store and retrieve, make sure that type is put in those `<>`. Also notice that all regular style methods are still made (`setIdentifier, getIdentifier`), but we use wrapper methods so that retrieving those values outside is uniform across all Traits. 
+
+Let's now look at how we might retrieve a trait:
+```java
+public class Whatever {
+    public static void main(String[] args) {
+        Player p1 = new Player(1);
+        p1.addTrait(new Identifier("ABC"));
+        for (PlayerTrait trait : p1.getTraits()) {
+            if (trait instanceof Identifier) {
+                System.out.println(trait.getTraitValue); // prints "ABC"
+            }
+        }
+    }
+}
+```
+
+To remove a trait, the process is the same as above, but **TAKE NOTE**: if you do not `break` after `removeTrait(someTrait)`, the program *will* crash.
+
+Below is another breakdown, including the `PlayerTrait` class:
 
 ```java
 public interface PlayerTrait<E> {

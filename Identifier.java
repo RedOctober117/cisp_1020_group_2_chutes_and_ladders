@@ -7,7 +7,6 @@ public class Identifier implements PlayerTrait<String> {
     static Random rand = new Random();
     static int generatedInt = rand.nextInt(4);
 
-    private Player playerReference;
     private String identifier;
     private String generatedColor;
 
@@ -20,6 +19,7 @@ public class Identifier implements PlayerTrait<String> {
     public void setIdentifier(String identifier) {
         this.identifier = generatedColor + identifier + ASCII_RESET;
     }
+
     public String getIdentifier() {
         return this.identifier;
     }
@@ -38,6 +38,6 @@ public class Identifier implements PlayerTrait<String> {
 
     @Override
     public String toString() {
-        return String.format("{{Trait: %s} {Player: %s} {Identifier: %s} {Color: %sCOLOR_ME%s}}", getClass(), this.playerReference, this.identifier, this.generatedColor, ASCII_RESET);
+        return String.format("{{Trait: %s} {Identifier: %s} {Color: %sCOLOR_ME%s}}", getClass(), this.identifier, this.generatedColor, ASCII_RESET);
     }
 }
