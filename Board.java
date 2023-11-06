@@ -64,7 +64,7 @@ public class Board {
         int x = 0;
         int y = 0;
         
-        clearScreen();
+        //clearScreen();
         String buffer = "";
         while (y < scaled_vertical_dimension) {
             if (y % 3 == 0 || y == 0) {

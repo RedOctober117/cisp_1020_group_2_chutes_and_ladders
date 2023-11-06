@@ -3,7 +3,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Prototype {
     public static void main(String[] args) throws InterruptedException {
-        RuleSet rules = new RuleSet("default", 7, 4, 1, 0, new ArrayList<Integer>(), new ArrayList<Integer>());
+        RuleSet rules = new RuleSet("default", 10, 4, 1, 0, new ArrayList<Integer>(), new ArrayList<Integer>());
         Board b1 = new Board(rules);
 
         ArrayList<Player> players = new ArrayList<>();
