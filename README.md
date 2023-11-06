@@ -177,18 +177,15 @@ dice=1
 chutes=16,6;47,26;49,11;56,53;62,19;64,60;93,73;95,75;98,78;
 ```
 
-Convert chutes and ladders squares into hashmaps with the sqaure as the key and the 4 cord possibilities as the values
-
 ### Rule Set Parser
 Read the ruleset doc and provide the info to relevant objects.
 
 ### Commands
-`-c` -> List commands
-`-s` -> List scores from file
-`-r` -> Roll 
-`-rr` -> Reset to menu (prompt for confirmation first)
-`-rn` -> Rename Player (will not interact with scores file, only active players)
-`-z` -> Zoom in on player (prompt for player identifier, then expand that square, showing the token of each present player)
-`-e` -> Show event src and dests
 `-a` -> Autoplay game
-
+`-c` -> List commands
+`-e` -> Show event src and dests
+`-r` -> Roll 
+`-rn` -> Rename Player (will not interact with scores file, only active players)
+`-rr` -> Reset to menu (prompt for confirmation first)
+`-s` -> List scores from file
+`-z` -> Zoom in on player (prompt for player identifier, then expand that square, showing the token of each present player)

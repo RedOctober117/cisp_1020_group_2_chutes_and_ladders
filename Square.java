@@ -25,9 +25,9 @@ public class Square {
   public int getNumber() {
     return this.squareNumber;
   }
-                 
-  public ArrayList<Coords> getCoords() {
-    return this.coords;
+
+  public Coords getPlayerCoord(int playerNumber) {
+    return coords.get(playerNumber);
   }
 
   public boolean hasPlayers() {
@@ -37,7 +37,7 @@ public class Square {
   public void addPlayer(Player player) {
     players.add(player);
   }
-
+  
   public void removePlayer(Player player) {
     players.remove(player);
   }
@@ -47,7 +47,7 @@ public class Square {
   }
 
   private void generateCoords(RuleSet rules) {
-    for (int i = 0; i < rules.getPlayerCount(); i++) {
+    for (int i = 0; i < 4; i++) {
       this.coords.add(new Coords(squareToX(this.squareNumber, i + 1, rules.getDimension()), squareToY(this.squareNumber, i + 1, rules.getDimension())));
     }
   }
@@ -55,14 +55,10 @@ public class Square {
   public TreeMap<Player, Coords> getPlayerCoords() {
     TreeMap<Player, Coords> playerCoordsPairing = new TreeMap<>();
     for (Player player : players) {
-      playerCoordsPairing.put(player, coords.get(player.getIndex() - 1));
+      playerCoordsPairing.put(player, coords.get(player.getPlayerNumber() - 1));
     }
     return playerCoordsPairing;
   }
-
-  // public String getSquareCoordinates() {
-  //   return String.format("%s %s\n%s %s", coords.get(0), coords.get(1), coords.get(2), coords.get(3));
-  // }
 
   private static int squareToX(int squareNumber, int playerIndex, int boardDimension) {
     int effective_space = squareNumber;
@@ -104,28 +100,10 @@ public class Square {
   }
 
   private static int squareToY(int squareNumber, int playerIndex, int boardDimension) {
-    // ArrayList<Integer> indexCollection1 = new ArrayList<>();
-    // int indexCounter = 1;
-    // while (indexCounter < boardDimension * 3) {
-    //   indexCollection1.add(indexCounter);
-    //   indexCounter += 3;
-    // }
-
-    // ArrayList<Integer> indexCollection2 = new ArrayList<>();
-    // indexCounter = 2;
-    // while (indexCounter < boardDimension * 3) {
-    //   indexCollection2.add(indexCounter);
-    //   indexCounter += 3;
-    // }
-
     int sector = boardDimension - ((int)Math.floor(squareNumber / boardDimension));
     if (squareNumber % boardDimension == 0 | sector == 0) {
       sector++;
     }
-    
-    // if (sector == 0) {
-    //   sector++;
-    // }
 
     if (playerIndex == 1 | playerIndex == 2) {
       return Square.indexCollection1.get(sector - 1);
