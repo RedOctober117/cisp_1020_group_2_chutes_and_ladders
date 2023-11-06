@@ -50,22 +50,24 @@ public class Board {
         int dimension = rules.getDimension();
         final int horizontal_scalar = 6;
         final int vertical_scalar = 3;
-
+        
         final String border = "\u001B[35m*\u001B[0m";
-
+        
         int scaled_horizontal_dimension = (dimension * horizontal_scalar) + 1;
         int scaled_vertical_dimension = (dimension * vertical_scalar) + 1;
-
+        
         int x = 0;
         int y = 0;
-
+        
+        String buffer = "";
         while (y < scaled_vertical_dimension) {
             if (y % 3 == 0 || y == 0) {
                 while (true) {
                     if (x == scaled_horizontal_dimension) {
                         break;
                     }
-                    System.out.print(border);
+                    // System.out.print(border);
+                    buffer += border;
                     x++;
                 }
             } else {
@@ -74,7 +76,8 @@ public class Board {
                         break;
                     }
                     if (x % horizontal_scalar == 0 || x == 0) {
-                        System.out.print(border);
+                        // System.out.print(border);
+                        buffer += border;
                         x++;
                     } else {
                         for (Square square : this.squares) {
@@ -98,10 +101,12 @@ public class Board {
                                         //     break;
                                         // }
                                         try {
-                                            System.out.printf("%s%d%s", player.getTrait(Color.KEY).getTraitValue(), player.getIndex(), Color.ASCII_RESET);
+                                            // System.out.printf("%s%d%s", player.getTrait(Color.KEY).getTraitValue(), player.getIndex(), Color.ASCII_RESET);
+                                            buffer += String.format("%s%d%s", player.getTrait(Color.KEY).getTraitValue(), player.getIndex(), Color.ASCII_RESET);
                                             x++;    
                                         } catch (Exception e) {
-                                            System.out.printf("%d", player.getIndex());
+                                            // System.out.printf("%d", player.getIndex());
+                                            buffer += String.format("%d", player.getIndex());
                                             x++;    
                                         }
                                         // if (!(player.getTrait(Color.COLOR).getTraitValue() == null)) {
@@ -115,14 +120,17 @@ public class Board {
                                 }
                             }
                         }
-                        System.out.print(" ");
+                        // System.out.print(" ");
+                        buffer += " ";
                         x++;
                     }
                 }
             }
-            System.out.println("");
+            // System.out.println("");
+            buffer += "\n";
             x = 0;
             y++;
         }
+        System.out.println(buffer);
     }
 }

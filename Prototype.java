@@ -30,11 +30,11 @@ public class Prototype {
             while (count < Math.pow(rules.getDimension(), 2) + 1) {
                 b1.movePlayer(players.get(0), count);
                 b1.drawBoard(rules);
-                for (Square square : b1.getSquares()) {
-                    if (square.hasPlayers()) {
-                        System.out.printf("Square: %d\n%s\n", square.getNumber(), square.getPlayers());
-                    } 
-                }
+                // for (Square square : b1.getSquares()) {
+                //     if (square.hasPlayers()) {
+                //         System.out.printf("Square: %d\n%s\n", square.getNumber(), square.getPlayers());
+                //     } 
+                // }
                 count++;
                 TimeUnit.MILLISECONDS.sleep(delay);
             }
@@ -43,11 +43,11 @@ public class Prototype {
             while (count <= Math.pow(rules.getDimension(), 2)) {
                 b1.movePlayer(players.get(1), count);
                 b1.drawBoard(rules);
-                for (Square square : b1.getSquares()) {
-                    if (square.hasPlayers()) {
-                        System.out.printf("Square: %d\n%s\n", square.getNumber(), square.getPlayers());
-                    }
-                }
+                // for (Square square : b1.getSquares()) {
+                //     if (square.hasPlayers()) {
+                //         System.out.printf("Square: %d\n%s\n", square.getNumber(), square.getPlayers());
+                //     }
+                // }
                 count++;
                 TimeUnit.MILLISECONDS.sleep(delay);
             }
@@ -57,11 +57,11 @@ public class Prototype {
             while (count <= Math.pow(rules.getDimension(), 2)) {
                 b1.movePlayer(players.get(2), count);
                 b1.drawBoard(rules);
-                for (Square square : b1.getSquares()) {
-                    if (square.hasPlayers()) {
-                        System.out.printf("Square: %d\n%s\n", square.getNumber(), square.getPlayers());
-                    }
-                }
+                // for (Square square : b1.getSquares()) {
+                //     if (square.hasPlayers()) {
+                //         System.out.printf("Square: %d\n%s\n", square.getNumber(), square.getPlayers());
+                //     }
+                // }
                 count++;
                 TimeUnit.MILLISECONDS.sleep(delay);
             }
@@ -70,11 +70,11 @@ public class Prototype {
             while (count <= Math.pow(rules.getDimension(), 2)) {
                 b1.movePlayer(players.get(3), count);
                 b1.drawBoard(rules);
-                for (Square square : b1.getSquares()) {
-                    if (square.hasPlayers()) {
-                        System.out.printf("Square: %d\n%s\n", square.getNumber(), square.getPlayers());
-                    }
-                }
+                // for (Square square : b1.getSquares()) {
+                //     if (square.hasPlayers()) {
+                //         System.out.printf("Square: %d\n%s\n", square.getNumber(), square.getPlayers());
+                //     }
+                // }
                 count++;
                 TimeUnit.MILLISECONDS.sleep(delay);
             }
