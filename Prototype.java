@@ -1,7 +1,5 @@
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.ConsoleHandler;
-import java.io.Console;
 
 public class Prototype {
     public static void main(String[] args) throws InterruptedException {

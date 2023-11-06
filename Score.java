@@ -1,3 +1,3 @@
-public class Score implements PlayerTrait {
+// public class Score implements PlayerTrait {
     
-}
+// }
