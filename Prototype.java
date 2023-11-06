@@ -5,9 +5,8 @@ import java.io.Console;
 
 public class Prototype {
     public static void main(String[] args) throws InterruptedException {
-        RuleSet rules = new RuleSet("default", 3, 4, 1, 0, new ArrayList<Integer>(), new ArrayList<Integer>());
+        RuleSet rules = new RuleSet("default", 7, 4, 1, 0, new ArrayList<Integer>(), new ArrayList<Integer>());
         Board b1 = new Board(rules);
-        // System.out.println(b1.getSquares());
 
         ArrayList<Player> players = new ArrayList<>();
         players.add(new Player(1));
@@ -23,68 +22,62 @@ public class Prototype {
         players.get(2).addTrait(Color.KEY, new Color());
         players.get(3).addTrait(Identifier.KEY, new Identifier("JDG"));
         players.get(3).addTrait(Color.KEY, new Color());
-        // System.out.println(players.get(0));
         
         int delay = 250;
 
         int count = 1;
-        while (count < Math.pow(rules.getDimension(), 2) + 1) {
-            b1.movePlayer(players.get(0), count);
-            b1.drawBoard(rules);
-            for (Square square : b1.getSquares()) {
-                if (square.hasPlayers()) {
-                    System.out.printf("Square: %d\n%s\n", square.getNumber(), square.getPlayers());
-                } 
-            }
-            count++;
-            TimeUnit.MILLISECONDS.sleep(delay);
-        }
-        
-        // for (PlayerTrait<?> trait : players.get(0).getTraits()) {
-        //     if (trait instanceof Identifier) {
-        //         players.get(0).removeTrait((Identifier)trait);
-        //         break;
-        //     }
-        // }
-
-        count = 2;
-        while (count <= Math.pow(rules.getDimension(), 2)) {
-            b1.movePlayer(players.get(1), count);
-            b1.drawBoard(rules);
-            for (Square square : b1.getSquares()) {
-                if (square.hasPlayers()) {
-                    System.out.printf("Square: %d\n%s\n", square.getNumber(), square.getPlayers());
+        if (true) {
+            while (count < Math.pow(rules.getDimension(), 2) + 1) {
+                b1.movePlayer(players.get(0), count);
+                b1.drawBoard(rules);
+                for (Square square : b1.getSquares()) {
+                    if (square.hasPlayers()) {
+                        System.out.printf("Square: %d\n%s\n", square.getNumber(), square.getPlayers());
+                    } 
                 }
+                count++;
+                TimeUnit.MILLISECONDS.sleep(delay);
             }
-            count++;
-            TimeUnit.MILLISECONDS.sleep(delay);
-        }
 
-
-        count = 2;
-        while (count <= Math.pow(rules.getDimension(), 2)) {
-            b1.movePlayer(players.get(2), count);
-            b1.drawBoard(rules);
-            for (Square square : b1.getSquares()) {
-                if (square.hasPlayers()) {
-                    System.out.printf("Square: %d\n%s\n", square.getNumber(), square.getPlayers());
+            count = 2;
+            while (count <= Math.pow(rules.getDimension(), 2)) {
+                b1.movePlayer(players.get(1), count);
+                b1.drawBoard(rules);
+                for (Square square : b1.getSquares()) {
+                    if (square.hasPlayers()) {
+                        System.out.printf("Square: %d\n%s\n", square.getNumber(), square.getPlayers());
+                    }
                 }
+                count++;
+                TimeUnit.MILLISECONDS.sleep(delay);
             }
-            count++;
-            TimeUnit.MILLISECONDS.sleep(delay);
-        }
 
-        count = 2;
-        while (count <= Math.pow(rules.getDimension(), 2)) {
-            b1.movePlayer(players.get(3), count);
-            b1.drawBoard(rules);
-            for (Square square : b1.getSquares()) {
-                if (square.hasPlayers()) {
-                    System.out.printf("Square: %d\n%s\n", square.getNumber(), square.getPlayers());
+
+            count = 2;
+            while (count <= Math.pow(rules.getDimension(), 2)) {
+                b1.movePlayer(players.get(2), count);
+                b1.drawBoard(rules);
+                for (Square square : b1.getSquares()) {
+                    if (square.hasPlayers()) {
+                        System.out.printf("Square: %d\n%s\n", square.getNumber(), square.getPlayers());
+                    }
                 }
+                count++;
+                TimeUnit.MILLISECONDS.sleep(delay);
             }
-            count++;
-            TimeUnit.MILLISECONDS.sleep(delay);
+
+            count = 2;
+            while (count <= Math.pow(rules.getDimension(), 2)) {
+                b1.movePlayer(players.get(3), count);
+                b1.drawBoard(rules);
+                for (Square square : b1.getSquares()) {
+                    if (square.hasPlayers()) {
+                        System.out.printf("Square: %d\n%s\n", square.getNumber(), square.getPlayers());
+                    }
+                }
+                count++;
+                TimeUnit.MILLISECONDS.sleep(delay);
+            }
         }
     }
 }
