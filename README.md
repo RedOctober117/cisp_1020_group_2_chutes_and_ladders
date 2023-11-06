@@ -1,7 +1,10 @@
 # Trait System
-Welcome to the Chutes and Ladders Trait System! The trait system allows for arbitrary "traits" to be added or removed from a given player, at any time!*. The system is easy, every trait implements `PlayerTrait`, which enforces the `getTraitValue()` and `setTraitValue()` methods. Let's take a look at an example:
+Welcome to the Chutes and Ladders Trait System! The trait system allows for arbitrary "traits" to be added or removed from a given player, at any time!. The system is easy, every trait implements `PlayerTrait`, which enforces the `getTraitValue()` and `setTraitValue()` methods. Let's take a look at an example:
+
 ```java
 public class Identifier implements PlayerTrait<String> {
+    public static final String KEY = "Identifier";
+
     private String identifier;
 
     public Identifier(String identifier) {
@@ -26,23 +29,20 @@ public class Identifier implements PlayerTrait<String> {
 
     @Overrider 
     public String toString() {
-        return String.format("{{Trait: %s} {Identifier: %s}}", getClass(), this.identifier");
+        return String.format("{{Trait: %s} {Identifier: %s}}", Identifier.KEY, this.identifier");
     }
 }
 ```
 
-First, notice the first lines `<String>`. The PlayerTrait system works for all types, so for whatever data you're wanting to store and retrieve, make sure that type is put in those `<>`. Also notice that all regular style methods are still made (`setIdentifier, getIdentifier`), but we use wrapper methods so that retrieving those values outside is uniform across all Traits. 
+First, notice the first lines `<String>`. The PlayerTrait system works for all types, so for whatever data you're wanting to store and retrieve, make sure that type is put in those `<>`. Also notice that all regular style methods are still made (`setIdentifier(), getIdentifier()`), but we use wrapper methods so that retrieving those values outside is uniform across all Traits. Also take note of the `KEY`. `KEY`s are used any time you want to access (add or remove) a trait. ***NEVER*** type `KEY`s by hand, ***ALWAYS*** use the static variable.
 
 Let's now look at how we might retrieve a trait:
 ```java
 public class Whatever {
     public static void main(String[] args) {
         Player p1 = new Player(1);
-        p1.addTrait(new Identifier("ABC"));
-        for (PlayerTrait trait : p1.getTraits()) {
-            if (trait instanceof Identifier) {
-                System.out.println(trait.getTraitValue); // prints "ABC"
-            }
+        p1.addTrait(Identifier.IDENTIFIER, new Identifier("ABC"));            
+        System.out.println(p1.getTrait(Identifier.KEY).getTraitValue()); // prints "ABC"
         }
     }
 }
@@ -59,6 +59,8 @@ public interface PlayerTrait<E> {
 }
 
 public class Identifier implements PlayerTrait<String> {
+    public static final String IDENTIFIER = "Identifier";
+
     private String identifier;
 
     public Identifier(String identifier) {}
@@ -73,18 +75,18 @@ public class Identifier implements PlayerTrait<String> {
     public void setTraitValue(String identifier) {
         setIdentifier(identifier);
     }
+}
 
 public class Player {
-    private ArrayList<PlayerTrait> traits;
+    private HashMap<String, PlayerTrait<?>> traits;
 
-    public void addTrait(PlayerTrait trait) {}
-    public void removeTrait(PlayerTrait trait) {}
+    public void addTrait(String key, PlayerTrait trait) {}
+    public void removeTrait(String key) {}
 }
 
 public static void main(String[] args) {
     Player p1 = new Player(1);
-    p1.addTrait(new Identifier("ABC"));
-}
+    p1.addTrait(Identifier.IDENTIFIER, new Identifier("ABC"));
 }
 ```
 
@@ -187,5 +189,6 @@ Read the ruleset doc and provide the info to relevant objects.
 `-rr` -> Reset to menu (prompt for confirmation first)
 `-rn` -> Rename Player (will not interact with scores file, only active players)
 `-z` -> Zoom in on player (prompt for player identifier, then expand that square, showing the token of each present player)
-
+`-e` -> Show event src and dests
+`-a` -> Autoplay game
 

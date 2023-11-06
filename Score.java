@@ -1,1 +1,3 @@
-// some bullshit
+public class Score implements PlayerTrait {
+    
+}

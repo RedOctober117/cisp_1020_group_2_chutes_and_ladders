@@ -39,7 +39,7 @@ public class Board {
     }
 
     public String getSquareInformation(int index) {
-        return squares.get(index - 1).getSquareCoordinates();
+        return squares.get(index - 1).toString();
     }
 
     public TreeMap<Player, Coords> getPlayerCoords(int squareNumber) {
@@ -82,21 +82,35 @@ public class Board {
                                 TreeMap<Player, Coords> playerData = square.getPlayerCoords();
                                 for (Player player : playerData.keySet()) {
                                     if (playerData.get(player).getX() == x & playerData.get(player).getY() == y) {
-                                        boolean found = false;
-                                        for (PlayerTrait<?> trait : player.getTraits()) {
-                                            if (trait instanceof Identifier) {
-                                                Identifier convertedTrait = (Identifier) trait;
-                                                found = true;
-                                                System.out.printf("%s%d%s", convertedTrait.getColor(), player.getIndex(), Identifier.ASCII_RESET);
-                                                x++;
-                                                break;
-                                            }
-                                        }
-                                        if (!found){
+                                        // boolean found = false;
+                                        // for (PlayerTrait<?> trait : player.getTraits()) {
+                                        //     if (trait instanceof Identifier) {
+                                        //         Identifier convertedTrait = (Identifier) trait;
+                                        //         found = true;
+                                        //         System.out.printf("%s%d%s", convertedTrait.getColor(), player.getIndex(), Identifier.ASCII_RESET);
+                                        //         x++;
+                                        //         break;
+                                        //     }
+                                        // }
+                                        // if (!found){
+                                        //     System.out.printf("%d", player.getIndex());
+                                        //     x++;
+                                        //     break;
+                                        // }
+                                        try {
+                                            System.out.printf("%s%d%s", player.getTrait(Color.KEY).getTraitValue(), player.getIndex(), Color.ASCII_RESET);
+                                            x++;    
+                                        } catch (Exception e) {
                                             System.out.printf("%d", player.getIndex());
-                                            x++;
-                                            break;
+                                            x++;    
                                         }
+                                        // if (!(player.getTrait(Color.COLOR).getTraitValue() == null)) {
+                                            // break;
+                                        // } else {
+                                        // }
+                                        // break;
+                                        //     }
+                                        // }
                                     }
                                 }
                             }

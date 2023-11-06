@@ -24,4 +24,8 @@ public class RuleSet {
   public int getDimension(){
     return this.dimension;
   }
+
+  public int getPlayerCount(){
+    return this.playerCount;
+  }
 }
