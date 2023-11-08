@@ -181,11 +181,11 @@ chutes=16,6;47,26;49,11;56,53;62,19;64,60;93,73;95,75;98,78;
 Read the ruleset doc and provide the info to relevant objects.
 
 ### Commands
-`-a` -> Autoplay game
-`-c` -> List commands
-`-e` -> Show event src and dests
-`-r` -> Roll 
-`-rn` -> Rename Player (will not interact with scores file, only active players)
-`-rr` -> Reset to menu (prompt for confirmation first)
-`-s` -> List scores from file
-`-z` -> Zoom in on player (prompt for player identifier, then expand that square, showing the token of each present player)
+- `-a` -> Autoplay game
+- `-c` -> List commands
+- `-e` -> Show event src and dests
+- `-r` -> Roll 
+- `-rn` -> Rename Player (will not interact with scores file, only active players)
+- `-rr` -> Reset to menu (prompt for confirmation first)
+- `-s` -> List scores from file
+- `-z` -> Zoom in on player (prompt for player identifier, then expand that square, showing the token of each present player)
