@@ -1,10 +1,6 @@
-import java.util.Random;
-
 public class Identifier implements PlayerTrait<String> {
+    
     public static final String KEY = "Identifier";
-    static Random rand = new Random();
-    static int generatedInt = rand.nextInt(4);
-
     private String identifier;
 
     public Identifier(String identifier) {
@@ -20,10 +16,12 @@ public class Identifier implements PlayerTrait<String> {
         return this.identifier;
     }
 
+    @Override
     public String getTraitValue() {
         return getIdentifier();
     }
 
+    @Override
     public void setTraitValue(String identifier) {
         setIdentifier(identifier);
     }

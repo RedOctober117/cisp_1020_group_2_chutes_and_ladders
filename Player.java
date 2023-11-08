@@ -1,8 +1,7 @@
 import java.util.HashMap;
 
-// Hashmap traits, make trait keys constant strings to enforce uniformity
-
 public class Player implements Comparable<Object> {
+
     private int playerNumber;
     private HashMap<String, PlayerTrait<?>> traits;
 

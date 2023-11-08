@@ -20,7 +20,11 @@ public class Prototype {
         players.get(2).addTrait(Color.KEY, new Color());
         players.get(3).addTrait(Identifier.KEY, new Identifier("JDG"));
         players.get(3).addTrait(Color.KEY, new Color());
-        
+
+        // Player testPlayer = new Player(4);
+        // testPlayer.addTrait(Identifier.KEY, new Identifier("TES"));
+        // String name = (String)testPlayer.getTrait(Identifier.KEY).getTraitValue();
+        // System.out.println(name);
         int delay = 250;
 
         int count = 1;
