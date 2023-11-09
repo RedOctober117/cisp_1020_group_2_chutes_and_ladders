@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.TreeMap;
 
 public class Board {
+    private static boolean asciiToggle;
     private ArrayList<Square> squares;
 
     public Board(RuleSet rules) {
@@ -46,6 +47,10 @@ public class Board {
         return squares.get(squareNumber - 1).getPlayerCoords();
     }
 
+    public void toggleAscii(boolean flip) {
+      this.asciiToggle = flip;
+    }
+
     public static void clearScreen() {  
         System.out.print("\033[H\033[2J");  
         System.out.flush();  
@@ -56,7 +61,10 @@ public class Board {
         final int horizontal_scalar = 6;
         final int vertical_scalar = 3;
         
-        final String border = "\u001B[35m*\u001B[0m";
+        String border = "\u001B[35m*\u001B[0m";
+        if (!Board.asciiToggle) {
+          border = "*";
+        }
         
         int scaled_horizontal_dimension = (dimension * horizontal_scalar) + 1;
         int scaled_vertical_dimension = (dimension * vertical_scalar) + 1;
@@ -64,7 +72,7 @@ public class Board {
         int x = 0;
         int y = 0;
         
-        //clearScreen();
+        // clearScreen();
         String buffer = "";
         while (y < scaled_vertical_dimension) {
             if (y % 3 == 0 || y == 0) {
@@ -90,9 +98,13 @@ public class Board {
                                 for (Player player : playerData.keySet()) {
                                     if (playerData.get(player).getX() == x & playerData.get(player).getY() == y) {
                                         try {
-
+                                          if (Board.asciiToggle) {
                                             buffer += String.format("%s%d%s", player.getTrait(Color.KEY).getTraitValue(), player.getPlayerNumber(), Color.ASCII_RESET);
                                             x++;    
+                                          } else {
+                                            buffer += String.format("%d", player.getPlayerNumber());
+                                            x++;    
+                                          }
                                         } catch (Exception e) {
                                             buffer += String.format("%d", player.getPlayerNumber());
                                             x++;    

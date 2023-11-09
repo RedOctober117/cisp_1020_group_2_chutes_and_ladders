@@ -5,7 +5,7 @@ public class Prototype {
     public static void main(String[] args) throws InterruptedException {
         RuleSet rules = new RuleSet("default", 10, 4, 1, 0, new ArrayList<Integer>(), new ArrayList<Integer>());
         Board b1 = new Board(rules);
-
+        b1.toggleAscii(false);
         ArrayList<Player> players = new ArrayList<>();
         players.add(new Player(1));
         players.add(new Player(2));
