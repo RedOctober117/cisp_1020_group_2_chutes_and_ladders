@@ -20,5 +20,5 @@ abstract class Parse {
         
     // }
 
-    abstract boolean writeFile(Object o);
+    abstract boolean writeFile(String path);
 }
