@@ -31,7 +31,16 @@ public class ScoreManager implements Parse
     }
 
     // Method to write scores to a file
-    public void writeScores(List<Integer> scores) {
+    public void writeScores(ArrayList<Player> players) {
+
+        int test_score = (int)players.get(0).getTrait(Score.KEY).getTraitValue();
+        String test_name = (String)players.get(0).getTrait(Identifier.KEY).getTraitValue();
+
+        "ABC"
+        test_score = 100
+        ABC 100
+        DBF 67
+
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
             for (int score : scores) {
                 writer.write(String.valueOf(score));
