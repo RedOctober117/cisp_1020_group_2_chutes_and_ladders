@@ -50,7 +50,7 @@ public class Game
         }
 
         //Entering the player count
-        System.out.print("Enter the number of players: (Up to 4 players) ");
+        System.out.print("Enter the number of players: (Up to 4 players): ");
         int playerCount = inputValidInt();
         while(playerCount < 1 || playerCount > 4)
         {
@@ -84,10 +84,15 @@ public class Game
             String name = in.next();
             players.get(i).addTrait(Name.KEY, new Name(name));
             players.get(i).addTrait(Identifier.KEY, new Identifier((String)players.get(i).getTrait(Name.KEY).getTraitValue()));
-            players.get(i).addTrait(Color.KEY, new Color());
             players.get(i).addTrait(Score.KEY, new Score(0));
-            System.out.println(players.get(i).getTrait(Color.KEY).getTraitValue() + "Identifier: " + players.get(i).getTrait(Identifier.KEY).getTraitValue() + ", Player: " 
-                    + players.get(i).getPlayerNumber() + Color.ASCII_RESET);
+            if (Board.ASCII_TOGGLE) {
+                players.get(i).addTrait(Color.KEY, new Color());
+                System.out.println(players.get(i).getTrait(Color.KEY).getTraitValue() + "Identifier: " + players.get(i).getTrait(Identifier.KEY).getTraitValue() + ", Player: " 
+                        + players.get(i).getPlayerNumber() + Color.ASCII_RESET);
+            } else {
+                System.out.println("Identifier: " + players.get(i).getTrait(Identifier.KEY).getTraitValue() + ", Player: " 
+                        + players.get(i).getPlayerNumber() + Color.ASCII_RESET);
+            }
         }      
         in.nextLine();
         System.out.println();

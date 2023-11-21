@@ -2,7 +2,8 @@ import java.util.ArrayList;
 import java.util.TreeMap;
 
 public class Board {
-    private static boolean asciiToggle;
+    public static boolean ASCII_TOGGLE;
+
     private ArrayList<Square> squares;
     private RuleSet rules;
 
@@ -95,7 +96,7 @@ public class Board {
      * @param flip 
      */
     public static void toggleAscii(boolean flip) {
-      asciiToggle = flip;
+      ASCII_TOGGLE = flip;
     }
 
     public static void clearScreen() {  
@@ -114,7 +115,7 @@ public class Board {
         final int vertical_scalar = 3;
         
         String border = "\u001B[35m*\u001B[0m";
-        if (!Board.asciiToggle) {
+        if (!Board.ASCII_TOGGLE) {
           border = "*";
         }
         
@@ -150,7 +151,7 @@ public class Board {
                                 for (Player player : playerData.keySet()) {
                                     if (playerData.get(player).getX() == x & playerData.get(player).getY() == y) {
                                         try {
-                                          if (Board.asciiToggle) {
+                                          if (Board.ASCII_TOGGLE) {
                                             buffer += String.format("%s%d%s", player.getTrait(Color.KEY).getTraitValue(), player.getPlayerNumber(), Color.ASCII_RESET);
                                             x++;    
                                           } else {
