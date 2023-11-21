@@ -94,8 +94,8 @@ public class Board {
      * 
      * @param flip 
      */
-    public void toggleAscii(boolean flip) {
-      this.asciiToggle = flip;
+    public static void toggleAscii(boolean flip) {
+      asciiToggle = flip;
     }
 
     public static void clearScreen() {  

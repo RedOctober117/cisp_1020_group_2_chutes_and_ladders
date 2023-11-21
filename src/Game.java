@@ -42,6 +42,13 @@ public class Game
             ladders.add(new Events(start, dest));
         }
         
+        System.out.print("Does your system support ASCII codes? y/N: ");
+        String ascii_prompt = in.nextLine();
+        if(ascii_prompt.equalsIgnoreCase("y")) {
+          Board.toggleAscii(true);
+          System.out.println("Enabled ASCII");
+        }
+
         //Entering the player count
         System.out.print("Enter the number of players: (Up to 4 players) ");
         int playerCount = inputValidInt();
@@ -80,7 +87,7 @@ public class Game
             players.get(i).addTrait(Color.KEY, new Color());
             players.get(i).addTrait(Score.KEY, new Score(0));
             System.out.println(players.get(i).getTrait(Color.KEY).getTraitValue() + "Identifier: " + players.get(i).getTrait(Identifier.KEY).getTraitValue() + ", Player: " 
-                    + players.get(i).getPlayerNumber());
+                    + players.get(i).getPlayerNumber() + Color.ASCII_RESET);
         }      
         in.nextLine();
         System.out.println();
