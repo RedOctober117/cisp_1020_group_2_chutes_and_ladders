@@ -1,55 +1,52 @@
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
-public class ScoreManager implements Parse
-{
-    private String filePath;
 
-    public ScoreManager(String filePath) {
-        this.filePath = filePath;
+public class ScoreManager {
+    //this part should be put into the main of the program. 
+    public static void main(String[] args) {
+        readScoresAndWriteToFile("scores.txt", "scores.txt");
     }
 
-    // Method to read scores from a file
-    public List<Integer> readScores() {
-        List<Integer> scores = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+    public static void readScoresAndWriteToFile(String scores, String scoreKeeper) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("scores.txt"));
+             BufferedWriter writer = new BufferedWriter(new FileWriter("scores.txt"))) {
+
             String line;
             while ((line = reader.readLine()) != null) {
-                // Assuming each line contains a single score
-                int score = Integer.parseInt(line);
-                scores.add(score);
+                
+                String[] parts = line.split(" ");
+                if (parts.length == 2) {
+                    String playerName = parts[0];
+                    int score = Integer.parseInt(parts[1]);
+
+                    // Validate player name and score
+                    if (isValidPlayerName(playerName) && isValidScore(score)) {
+                        // Write the validated data to the output file
+                        writer.write(playerName + " " + score);
+                        writer.newLine();
+                    } else {
+                        System.out.println("Invalid data: " + line);
+                    }
+                } else {
+                    System.out.println("Invalid format: " + line);
+                }
             }
-        } catch (IOException e) {
+        } catch (IOException | NumberFormatException e) {
             e.printStackTrace();
-            // Handle file reading errors here
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-            // Handle invalid score format in the file
-        }
-        return scores;
-    }
-
-    // Method to write scores to a file
-    public void writeScores(ArrayList<Player> players) {
-
-        int test_score = (int)players.get(0).getTrait(Score.KEY).getTraitValue();
-        String test_name = (String)players.get(0).getTrait(Identifier.KEY).getTraitValue();
-
-        "ABC"
-        test_score = 100
-        ABC 100
-        DBF 67
-
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-            for (int score : scores) {
-                writer.write(String.valueOf(score));
-                writer.newLine();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            // Handle file writing errors here
         }
     }
 
+    private static boolean isValidPlayerName(String playerName) {
+        // Player name should be three characters long
+        return playerName.length() == 3;
+    }
+
+    private static boolean isValidScore(int score) {
+        // Score should be in the range of 0 to 100
+        return score >= 0 && score <= 100;
+    }
 }
