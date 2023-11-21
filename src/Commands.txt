@@ -1,0 +1,3 @@
+-c  -> List commands
+-e  -> Show chute and ladder spaces
+-s  -> List scores from file

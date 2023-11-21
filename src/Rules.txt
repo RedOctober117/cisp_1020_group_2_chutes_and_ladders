@@ -1,0 +1,7 @@
+default 10 1 100
+
+Above in order:
+Name
+Dimension of the board (x by x)
+Number of dice
+Roll delta
