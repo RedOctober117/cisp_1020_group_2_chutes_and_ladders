@@ -1,16 +1,22 @@
+// Levi and Bruce
+
 import java.util.HashMap;
 
 public class Player implements Comparable<Object> {
 
+    private static int lastPlayerNum = 0;
+    private final int PLAYERNUM;
+
     private int playerNumber;
     private HashMap<String, PlayerTrait<?>> traits;
 
-    public Player(int playerNumber) {
-        this.playerNumber = playerNumber;
+    public Player() {
+        lastPlayerNum++;
+        PLAYERNUM = lastPlayerNum;
         this.traits = new HashMap<>();
     }
 
-    public int getPlayerNumber() {
+        public int getPlayerNumber() {
         return this.playerNumber;
     }
 

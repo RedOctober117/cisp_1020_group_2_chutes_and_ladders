@@ -4,15 +4,17 @@ import java.util.TreeMap;
 public class Board {
     private static boolean asciiToggle;
     private ArrayList<Square> squares;
+    private RuleSet rules;
 
     public Board(RuleSet rules) {
         this.squares = new ArrayList<Square>();
-        generateSquares(rules);
+        this.rules = rules;
+        generateSquares();
     }
 
-    private void generateSquares(RuleSet rules) {
-        for (int i = 1; i <= Math.pow(rules.getDimension(), 2); i++) {
-            this.squares.add(new Square(i, rules));
+    private void generateSquares() {
+        for (int i = 1; i <= Math.pow(this.rules.getDimension(), 2); i++) {
+            this.squares.add(new Square(i, this.rules));
         }
     }
 
@@ -56,8 +58,8 @@ public class Board {
         System.out.flush();  
     }
 
-    public void drawBoard(RuleSet rules){
-        int dimension = rules.getDimension();
+    public void drawBoard(){
+        int dimension = this.rules.getDimension();
         final int horizontal_scalar = 6;
         final int vertical_scalar = 3;
         

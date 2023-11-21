@@ -21,6 +21,12 @@ public class Prototype {
         players.get(3).addTrait(Identifier.KEY, new Identifier("JDG"));
         players.get(3).addTrait(Color.KEY, new Color());
 
+
+
+
+        // michael test here
+        
+
         // Player testPlayer = new Player(4);
         // testPlayer.addTrait(Identifier.KEY, new Identifier("TES"));
         // String name = (String)testPlayer.getTrait(Identifier.KEY).getTraitValue();
@@ -31,7 +37,7 @@ public class Prototype {
         if (true) {
             while (count < Math.pow(rules.getDimension(), 2) + 1) {
                 b1.movePlayer(players.get(0), count);
-                b1.drawBoard(rules);
+                b1.drawBoard();
                 // for (Square square : b1.getSquares()) {
                 //     if (square.hasPlayers()) {
                 //         System.out.printf("Square: %d\n%s\n", square.getNumber(), square.getPlayers());
@@ -44,7 +50,7 @@ public class Prototype {
             count = 2;
             while (count <= Math.pow(rules.getDimension(), 2)) {
                 b1.movePlayer(players.get(1), count);
-                b1.drawBoard(rules);
+                b1.drawBoard();
                 // for (Square square : b1.getSquares()) {
                 //     if (square.hasPlayers()) {
                 //         System.out.printf("Square: %d\n%s\n", square.getNumber(), square.getPlayers());
@@ -58,7 +64,7 @@ public class Prototype {
             count = 2;
             while (count <= Math.pow(rules.getDimension(), 2)) {
                 b1.movePlayer(players.get(2), count);
-                b1.drawBoard(rules);
+                b1.drawBoard();
                 // for (Square square : b1.getSquares()) {
                 //     if (square.hasPlayers()) {
                 //         System.out.printf("Square: %d\n%s\n", square.getNumber(), square.getPlayers());
@@ -71,7 +77,7 @@ public class Prototype {
             count = 2;
             while (count <= Math.pow(rules.getDimension(), 2)) {
                 b1.movePlayer(players.get(3), count);
-                b1.drawBoard(rules);
+                b1.drawBoard();
                 // for (Square square : b1.getSquares()) {
                 //     if (square.hasPlayers()) {
                 //         System.out.printf("Square: %d\n%s\n", square.getNumber(), square.getPlayers());
