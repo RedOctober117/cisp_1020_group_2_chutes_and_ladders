@@ -33,16 +33,19 @@ public class Menu {
 
     /**
      * adds a player with a key (playerName) and value (score)
+     * 
      * @param playerName
      * @param score
      */
     public void addPlayer(String playerName, int score) {
         playerScores.put(playerName, score);
     }
+
     /**
      * changes the score associated with a player key
+     * 
      * @param playerName
-     * @param score 
+     * @param score
      */
     public void changeScore(String playerName, int score) {
         playerScores.replace(playerName, score);
@@ -52,7 +55,7 @@ public class Menu {
      * Print current scores for each player
      */
     public void printScores() {
-        System.out.println("Current Scores:");
+        // System.out.println("Current Scores:");
         for (Player player : players) {
             System.out.println("==Player-" + player.getPlayerNumber() + "==: "
                     + (int) player.getTrait(Score.KEY).getTraitValue());
@@ -75,8 +78,8 @@ public class Menu {
     }
 
     /**
-     * reads from Chutes&Ladders.txt to display the spaces that are affected 
-     * by chutes/ladders. prints where the space where the chute/ladder starts 
+     * reads from Chutes&Ladders.txt to display the spaces that are affected
+     * by chutes/ladders. prints where the space where the chute/ladder starts
      * as well as where the destination space is.
      */
     public void printEvents() {
@@ -108,37 +111,47 @@ public class Menu {
     }
 
     /**
-     *  prints the menu with an easily readable format for end-user
+     * prints the menu with an easily readable format for end-user
      */
     public void printMenu() {
-        for (Player player : players) {
-            System.out.printf(" _______________________\n"
-                    + "| %s |\t"
-                    + "| %3d |\n", player.getTrait(Identifier.KEY).getTraitValue(),
-                    player.getTrait(Score.KEY).getTraitValue());
+        if (Board.ASCII_TOGGLE) {
+            System.out.printf(" __________\n");
+            for (Player player : players) {
+                System.out.printf("| %s |"
+                        + "%s%3d%s |\n", (String)player.getTrait(Color.KEY).getTraitValue() + player.getTrait(Identifier.KEY).getTraitValue() + Color.ASCII_RESET, (String)player.getTrait(Color.KEY).getTraitValue(), 
+                        player.getTrait(Score.KEY).getTraitValue(), Color.ASCII_RESET);
+            }
+            System.out.print("|(-c): ");
+        } else {
+            System.out.printf(" __________\n");
+            for (Player player : players) {
+                System.out.printf("| %s |"
+                        + "%3d |\n", player.getTrait(Identifier.KEY).getTraitValue(),
+                        player.getTrait(Score.KEY).getTraitValue());
+            }
+            System.out.print("|(-c): ");
         }
-        System.out.println("Enter a command (-c for commands)");
     }
-//        an example of one way to print the menu:
-//
-//        System.out.printf(" _______________________\n"
-//                + "| %s | %s | %s | %s |\n"
-//                + "| %3d | %3d | %3d | %3d |\n"
-//                + "|(-c for commands)? ");
-//                (String) players.get(0).getTrait(Identifier.KEY).getTraitValue(),
-//                (String) players.get(1).getTrait(Identifier.KEY).getTraitValue(),
-//                (String) players.get(2).getTrait(Identifier.KEY).getTraitValue(),
-//                (String) players.get(3).getTrait(Identifier.KEY).getTraitValue(),
-//                (int) players.get(0).getTrait(Score.KEY).getTraitValue(),
-//                (int) players.get(1).getTrait(Score.KEY).getTraitValue(),
-//                (int) players.get(2).getTrait(Score.KEY).getTraitValue(),
-//                (int) players.get(3).getTrait(Score.KEY).getTraitValue()
+    // an example of one way to print the menu:
+    //
+    // System.out.printf(" _______________________\n"
+    // + "| %s | %s | %s | %s |\n"
+    // + "| %3d | %3d | %3d | %3d |\n"
+    // + "|(-c for commands)? ");
+    // (String) players.get(0).getTrait(Identifier.KEY).getTraitValue(),
+    // (String) players.get(1).getTrait(Identifier.KEY).getTraitValue(),
+    // (String) players.get(2).getTrait(Identifier.KEY).getTraitValue(),
+    // (String) players.get(3).getTrait(Identifier.KEY).getTraitValue(),
+    // (int) players.get(0).getTrait(Score.KEY).getTraitValue(),
+    // (int) players.get(1).getTrait(Score.KEY).getTraitValue(),
+    // (int) players.get(2).getTrait(Score.KEY).getTraitValue(),
+    // (int) players.get(3).getTrait(Score.KEY).getTraitValue()
 
     /**
      * receives an input and calls the appropriate method for each case
      * if the user input is not one of these cases, print "Invalid Command"
      * 
-     * @param input 
+     * @param input
      */
     public void recieveCommand(String input) {
         switch (input) {
@@ -150,6 +163,9 @@ public class Menu {
                 break;
             case "-s":
                 printScores();
+                break;
+            case "-a":
+                Game.AUTO_PLAY = true;
                 break;
             default:
                 System.out.println("Invalid Command");

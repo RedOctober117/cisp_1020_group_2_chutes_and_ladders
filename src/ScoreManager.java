@@ -7,9 +7,9 @@ import java.io.IOException;
 
 public class ScoreManager {
     //this part should be put into the main of the program. 
-    public static void main(String[] args) {
-        readScoresAndWriteToFile("scores.txt", "scores.txt");
-    }
+    // public static void main(String[] args) {
+    //     readScoresAndWriteToFile("scores.txt", "scores.txt");
+    // }
 
     public static void readScoresAndWriteToFile(String scores, String scoreKeeper) {
         try (BufferedReader reader = new BufferedReader(new FileReader("scores.txt"));

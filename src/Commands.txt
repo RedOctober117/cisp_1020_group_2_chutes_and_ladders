@@ -1,3 +1,5 @@
 -c  -> List commands
 -e  -> Show chute and ladder spaces
 -s  -> List scores from file
+-r  -> Roll your die
+-a  -> Set the game to autoplay. WARNING! Cannot exit  once started!

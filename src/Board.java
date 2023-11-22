@@ -10,7 +10,7 @@ public class Board {
     /**
      * constructor which uses the rules held in a RuleSet object
      * 
-     * @param rules 
+     * @param rules
      */
     public Board(RuleSet rules) {
         this.squares = new ArrayList<>();
@@ -29,16 +29,18 @@ public class Board {
 
     /**
      * returns the number of squares on the board
-     * @return 
+     * 
+     * @return
      */
     public ArrayList<Square> getSquares() {
         return this.squares;
     }
-    
+
     /**
      * for the number of Player in players, add that many players to the
      * array list squares
-     * @param players 
+     * 
+     * @param players
      */
     public void addPlayers(ArrayList<Player> players) {
         for (Player player : players) {
@@ -49,8 +51,9 @@ public class Board {
     /**
      * scans all squares until it finds a space with the target player on it
      * and then moves them to a different space (squareNumber)
+     * 
      * @param player
-     * @param squareNumber 
+     * @param squareNumber
      */
     public void movePlayer(Player player, int squareNumber) {
         for (Square sq : squares) {
@@ -65,17 +68,18 @@ public class Board {
      * returns the reference of a certain square
      * 
      * @param squareNumber
-     * @return 
+     * @return
      */
     public Square getSquareReference(int squareNumber) {
         return squares.get(squareNumber - 1);
     }
-/**
- * returns a toString format of the reference held in squares
- * 
- * @param squareNumber
- * @return 
- */
+
+    /**
+     * returns a toString format of the reference held in squares
+     * 
+     * @param squareNumber
+     * @return
+     */
     public String getSquareInformation(int squareNumber) {
         return squares.get(squareNumber - 1).toString();
     }
@@ -84,7 +88,7 @@ public class Board {
      * returns the coordinates of each player
      * 
      * @param squareNumber
-     * @return 
+     * @return
      */
     public TreeMap<Player, Coords> getPlayerCoords(int squareNumber) {
         return squares.get(squareNumber - 1).getPlayerCoords();
@@ -93,15 +97,15 @@ public class Board {
     /**
      * toggles ascii on/off with a boolean value
      * 
-     * @param flip 
+     * @param flip
      */
     public static void toggleAscii(boolean flip) {
-      ASCII_TOGGLE = flip;
+        ASCII_TOGGLE = flip;
     }
 
-    public static void clearScreen() {  
-        System.out.print("\033[H\033[2J");  
-        System.out.flush();  
+    public static void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 
     /**
@@ -109,23 +113,24 @@ public class Board {
      * adds an appropriate number of players to the board
      * uses a coordinate system for each character
      */
-    public void drawBoard(){
+    public void drawBoard() {
         int dimension = this.rules.getDimension();
         final int horizontal_scalar = 6;
         final int vertical_scalar = 3;
-        
+
         String border = "\u001B[35m*\u001B[0m";
         if (!Board.ASCII_TOGGLE) {
-          border = "*";
+            border = "*";
+        } else {
+            clearScreen();
         }
-        
+
         int scaled_horizontal_dimension = (dimension * horizontal_scalar) + 1;
         int scaled_vertical_dimension = (dimension * vertical_scalar) + 1;
-        
+
         int x = 0;
         int y = 0;
-        
-        // clearScreen();
+
         String buffer = "";
         while (y < scaled_vertical_dimension) {
             if (y % 3 == 0 || y == 0) {
@@ -151,16 +156,18 @@ public class Board {
                                 for (Player player : playerData.keySet()) {
                                     if (playerData.get(player).getX() == x & playerData.get(player).getY() == y) {
                                         try {
-                                          if (Board.ASCII_TOGGLE) {
-                                            buffer += String.format("%s%d%s", player.getTrait(Color.KEY).getTraitValue(), player.getPlayerNumber(), Color.ASCII_RESET);
-                                            x++;    
-                                          } else {
-                                            buffer += String.format("%d", player.getPlayerNumber());
-                                            x++;    
-                                          }
+                                            if (Board.ASCII_TOGGLE) {
+                                                buffer += String.format("%s%d%s",
+                                                        player.getTrait(Color.KEY).getTraitValue(),
+                                                        player.getPlayerNumber(), Color.ASCII_RESET);
+                                                x++;
+                                            } else {
+                                                buffer += String.format("%d", player.getPlayerNumber());
+                                                x++;
+                                            }
                                         } catch (Exception e) {
                                             buffer += String.format("%d", player.getPlayerNumber());
-                                            x++;    
+                                            x++;
                                         }
                                     }
                                 }
