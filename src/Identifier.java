@@ -1,5 +1,12 @@
+// Bruce + Levi
+
 import java.util.Random;
 
+/**
+ * Identifierr provides a way to store the players name. It holds their name as
+ * a string, and a 3 letter substring as their Identifier, similar to arcade
+ * cabinets.
+ */
 public class Identifier implements PlayerTrait<String> {
     public static final String KEY = "Identifier";
     static Random rand = new Random();
@@ -13,49 +20,49 @@ public class Identifier implements PlayerTrait<String> {
      * at the start of the game each player enters their name
      * the identifier is the first three letters of their name
      * it is a trait unique to each player
-     * @param identifier 
+     * 
+     * @param identifier
      */
-    public Identifier(String identifier) 
-    {
+    public Identifier(String identifier) {
         this.identifier = identifier;
 
     }
 
     /**
      * changes the value of the identifier
-     * @param identifier 
+     * 
+     * @param identifier
      */
-    public void setIdentifier(String identifier) 
-    {
+    public void setIdentifier(String identifier) {
         this.identifier = identifier;
     }
 
     /**
      * returns the value of the identifier
-     * @return 
+     * 
+     * @return
      */
-    public String getIdentifier() 
-    {
+    public String getIdentifier() {
         return this.identifier;
     }
 
     /**
      * returns the value of the identifier as a trait
-     * @return 
+     * 
+     * @return
      */
     @Override
-    public String getTraitValue() 
-    {
-        while(identifier.length() < 3)
-        {
-            identifier = identifier + "#";  //This can be whatever chracter works best. # is a placeholder
+    public String getTraitValue() {
+        while (identifier.length() < 3) {
+            identifier = identifier + "#"; // This can be whatever chracter works best. # is a placeholder
         }
         return (getIdentifier().substring(0, 3)).toUpperCase();
     }
 
     /**
      * changes the value of the identifier as a trait
-     * @param identifier 
+     * 
+     * @param identifier
      */
     @Override
     public void setTraitValue(String identifier) {
@@ -64,7 +71,8 @@ public class Identifier implements PlayerTrait<String> {
 
     /**
      * returns the value identifier key as well as the string associated with it
-     * @return 
+     * 
+     * @return String
      */
     @Override
     public String toString() {

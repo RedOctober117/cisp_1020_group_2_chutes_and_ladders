@@ -1,6 +1,9 @@
+// Bruce
 
+/**
+ * Coords is used to represent the locations of the printer in Board. Each Square will hold 4 Coords, representing the possible locations for each player.
+ */
 public class Coords {
-    //instance variables
     private int x;
     private int y;
 
@@ -8,8 +11,8 @@ public class Coords {
      * constructor
      * creates a set of coordinates of values x and y
      * 
-     * @param x
-     * @param y 
+     * @param x int
+     * @param y int
      */
     public Coords(int x, int y) {
         this.x = x;

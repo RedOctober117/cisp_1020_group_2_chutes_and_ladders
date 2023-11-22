@@ -1,12 +1,8 @@
-///*
-// * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-// * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
 
-
-///**
-// *
-// * @author ryan
-// */
+/**
+*
+* @author ryan
+*/
 public class Score implements PlayerTrait<Integer>{
     public static final String KEY = "Score";
     private int playerScore;
