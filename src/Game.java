@@ -185,7 +185,13 @@ public class Game {
         System.out.println(" ");
         System.out.println("Final Scores: ");
         m1.printScores();
-        ScoreManager.readScoresAndWriteToFile("scores.txt", "scores.txt");
+        ScoreManager scoreManager = new ScoreManager();
+        // Write a score
+        for (Player player : players) {
+            scoreManager.writeScore((String)player.getTrait(Identifier.KEY).getTraitValue(), (int)player.getTrait(Score.KEY).getTraitValue());
+        }
+        // Display scores in the terminal
+        scoreManager.displayScores();
     }
 
     // Input validation method
