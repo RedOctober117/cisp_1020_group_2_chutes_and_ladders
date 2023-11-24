@@ -22,7 +22,9 @@ public class ScoreManager {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
             System.out.println("Player Scores:");
-            while ((line = reader.readLine()) != null) {
+            for (int i = 0; i < 5; i++) {
+                line = reader.readLine();
+            // while ((line = reader.readLine()) != null) {
                 // Assuming the file format is "PlayerName Score"
                 String[] parts = line.split(" ");
                 if (parts.length == 2) {
