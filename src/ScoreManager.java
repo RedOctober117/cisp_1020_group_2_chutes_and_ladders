@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 
 public class ScoreManager {
 
-    private final String filePath = "scores.txt";
+    private final String filePath = "txt/scores.txt";
 
     public void writeScore(String playerName, int score) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(filePath, true))) {

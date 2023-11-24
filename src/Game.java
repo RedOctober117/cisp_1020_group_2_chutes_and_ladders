@@ -25,7 +25,7 @@ public class Game {
         int endGame;
 
         // Creating an array list of chutes and an array list of ladders
-        File inputFileCnL = new File("Chutes&Ladders.txt");
+        File inputFileCnL = new File("txt/Chutes&Ladders.txt");
         Scanner CnL = new Scanner(inputFileCnL);
         ArrayList<Events> chutes = new ArrayList<>();
         while (CnL.hasNextInt()) {
@@ -64,7 +64,7 @@ public class Game {
         }
 
         // Setting up the board and rules
-        File rules = new File("Rules.txt");
+        File rules = new File("txt/Rules.txt");
         Scanner r = new Scanner(rules);
         RuleSet r1 = new RuleSet(r.next(), r.nextInt(), playerCount,
                 r.nextInt(), r.nextInt(), chutes, ladders);
