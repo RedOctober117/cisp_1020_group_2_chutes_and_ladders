@@ -1,4 +1,7 @@
-# Trait System
+# Chutes and Ladders
+
+
+## Trait System
 Welcome to the Chutes and Ladders Trait System! The trait system allows for arbitrary "traits" to be added or removed from a given player, at any time!. The system is easy, every trait implements `PlayerTrait`, which enforces the `getTraitValue()` and `setTraitValue()` methods. Let's take a look at an example:
 
 ```java
@@ -34,21 +37,19 @@ public class Identifier implements PlayerTrait<String> {
 }
 ```
 
-First, notice the first lines `<String>`. The PlayerTrait system works for all types, so for whatever data you're wanting to store and retrieve, make sure that type is put in those `<>`. Also notice that all regular style methods are still made (`setIdentifier(), getIdentifier()`), but we use wrapper methods so that retrieving those values outside is uniform across all Traits. Also take note of the `KEY`. `KEY`s are used any time you want to access (add or remove) a trait. ***NEVER*** type `KEY`s by hand, ***ALWAYS*** use the static variable.
+First, notice the first line's `<String>`. The PlayerTrait system works for all types, so for whatever data you're wanting to store and retrieve, make sure that type is put in those `<>`. **IMPORTANT:** Types can only be wrapper classes. You will need to cast to the appropriate type when you retrieve a value. Also notice that all regular style methods are still made (`setIdentifier(), getIdentifier()`), but we use wrapper methods so that retrieving those values outside the class is uniform across all Traits. Also take note of the `KEY`. `KEY`s are used any time you want to access (add or remove) a trait. ***NEVER*** type `KEY`s by hand, ***ALWAYS*** use the static variable. Traits are stored in HashMaps, so duplicate traits must be avoided. If you need a trait to compose multiple objects, consider a wrapper trait that uses a List as its type.
 
 Let's now look at how we might retrieve a trait:
 ```java
 public class Whatever {
     public static void main(String[] args) {
-        Player p1 = new Player(1);
-        p1.addTrait(Identifier.IDENTIFIER, new Identifier("ABC"));            
+        Player p1 = new Player();
+        p1.addTrait(Identifier.KEY, new Identifier("ABC"));            
         System.out.println(p1.getTrait(Identifier.KEY).getTraitValue()); // prints "ABC"
         }
     }
 }
 ```
-
-To remove a trait, the process is the same as above, but **TAKE NOTE**: if you do not `break` after `removeTrait(someTrait)`, the program *will* crash.
 
 Below is another breakdown, including the `PlayerTrait` class:
 
@@ -59,14 +60,15 @@ public interface PlayerTrait<E> {
 }
 
 public class Identifier implements PlayerTrait<String> {
-    public static final String IDENTIFIER = "Identifier";
+    public static final String KEY = "Identifier";
 
     private String identifier;
 
-    public Identifier(String identifier) {}
+    public Identifier(String identifier) {/* snip */}
 
-    public void setIdentifier(String ident) {}
-    public String getIdentifier() {}
+    public void setIdentifier(String ident) {/* snip */}
+
+    public String getIdentifier() {/* snip */}
 
     public String getTraitValue() {
         return getIdentifier();
@@ -80,38 +82,41 @@ public class Identifier implements PlayerTrait<String> {
 public class Player {
     private HashMap<String, PlayerTrait<?>> traits;
 
-    public void addTrait(String key, PlayerTrait trait) {}
-    public void removeTrait(String key) {}
+    public void addTrait(String key, PlayerTrait trait) {/* snip */}
+    public void removeTrait(String key) {/* snip */}
 }
 
 public static void main(String[] args) {
-    Player p1 = new Player(1);
-    p1.addTrait(Identifier.IDENTIFIER, new Identifier("ABC"));
+    Player p1 = new Player();
+    p1.addTrait(Identifier.KEY, new Identifier("ABC"));
 }
 ```
 
 
 ## Class Layout
 ### Game Classes
-- Bruce: Load Class -> Not sure the full scope yet. Needs to work with RuleSet to allow user to choose the rule set at least
-- Bruce: Board Class -> Print the board and player tokens
-- Michael: Menu Class -> Print current scores for each player
-- Levi: Player Class -> Maintain player 3-letter identifier and store Coords, Score object
-- Ryan: Coords Class -> Store and manipulate x and y values
-- Ryan: Score Class -> Calculate and maintain player score
-- Orion: Dice Class -> Roll dice and display art for result
+- Board Class -> Print the board and player tokens
+- Menu Class -> Print current scores for each player
+- Player Class -> Maintain player index and map of PlayerTraits
+- Coords Class -> Store and manipulate x and y values
+- Dice Class -> Roll dice and display art for result
+- Events -> Basic class to hold the squares of a chute or ladder
+- RuleSet -> Maintain game rules
 - ChutesAndLadders Class -> Main game logic
 
 ### IO Classes
-- Bruce, Michael: FileParser Interface -> Common methods for parsing any files
-- Bruce, Michael: Scoreboard Class -> Implement FileParser; Write and read score files from given rule set
-- Bruce, Michael: RuleSet Class -> Implement FileParser; Read (and maybe write?) and represent ruleset files
-
-### Error Handling
-- Bruce: `UnknownCommandException` -> Print command list and wait for new input
+- FileParser Interface -> Common methods for parsing any files
+- ScoreManager -> Write and read score files from given rule set
+- RuleSet Class -> Implement FileParser; Read (and maybe write?) and represent ruleset files
 
 ### Interfaces
-- Bruce: File parser interface
+- PlayerTrait -> Unified interface for player attributes
+
+### PlayerTraits
+- Color -> ASCII codes to add some color to the player objects
+- Identifier -> Maintain a three letter nickname for players, reminiscent of arcade cabinets
+- Score -> Store player score (the square they're on)
+- Name -> Store player's name
 
 #### Player
 Instance vars:
