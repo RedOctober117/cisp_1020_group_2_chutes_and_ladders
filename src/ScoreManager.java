@@ -39,6 +39,10 @@ public class ScoreManager {
             e.printStackTrace();
         }
     }
+// ScoreManager
+// + final filePath: String
+// + writeScore(playerName: String, score: int): void
+// + displayScores(): void
 
     // public static void main(String[] args) {
     //     ScoreManager scoreManager = new ScoreManager();
