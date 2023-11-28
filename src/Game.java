@@ -168,7 +168,7 @@ public class Game {
                     System.out.println("");
                 }
                 m1.printMenu();
-                System.out.println();
+                //System.out.println();
                 TimeUnit.MILLISECONDS.sleep(3000);
             }
             // If no players win, displays everyone's current positions at the end of a turn
