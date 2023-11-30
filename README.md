@@ -13,7 +13,7 @@ Board
 To prevent Player from ballooning to unreasonable scale, PlayerTrait was created. PlayerTrait allows for the creation of arbitrary player attributes, anything from a name to a status effect.
 
 Following the creating and finalization of the preceding classes, the rest of the team was assigned to various tasks to build upon the foundation I laid out. The breakdown is as follows:
-
+```
 Michael
     ⤷ ScoreManager
     ⤷ Menu
@@ -37,7 +37,7 @@ Bruce
     ⤷ Color
     ⤷ PlayerTrait
     ⤷ RuleSet
-
+```
 Most classes were built in parallel, with Game, of course, being finalized last. With the functional completion of Game, I went back in and cleaned up the UX and implemented the auto play function. 
 
 
