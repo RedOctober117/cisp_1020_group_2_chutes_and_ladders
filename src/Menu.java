@@ -67,7 +67,7 @@ public class Menu {
      */
     public void printRules() {
         try {
-            File rules = new File("Rules.txt");
+            File rules = new File("txt/Rules.txt");
             Scanner in = new Scanner(rules);
             while (in.hasNext()) {
                 System.out.println(in.nextLine());
@@ -84,7 +84,7 @@ public class Menu {
      */
     public void printEvents() {
         try {
-            File events = new File("Chutes&Ladders.txt");
+            File events = new File("txt/Chutes&Ladders.txt");
             Scanner in = new Scanner(events);
             while (in.hasNext()) {
                 System.out.println(in.nextLine());
@@ -99,7 +99,7 @@ public class Menu {
      */
     public void printCommandList() {
         try {
-            File commands = new File("Commands.txt");
+            File commands = new File("txt/Commands.txt");
             Scanner in = new Scanner(commands);
             while (in.hasNext()) {
                 System.out.println(in.nextLine());

@@ -1,4 +1,44 @@
 # Chutes and Ladders
+## Design Process
+Chutes and Ladders began with generalizing the math required to draw the board and the players. Previously, the math was brute forced and only worked with a single dimension. Players also maintained their own position via an x and y. The foundation of Chutes and Ladders v2 came about with discovery of the math for dynamically generating the Board and the possible player positions for each square. Now, players no longer know their own position; they are instead associated with a Square, cooresponding to the game square they are on. The pregenerated coords and the players index determines where the player is printed on the board itself. 
+
+The basic structure was as follows:
+```
+Board
+    ⤷ List of n Squares, where n = board dimension ^ 2
+        ⤷ List of n Coords, where n = 4
+        ⤷ List of n Players, where 0 <= n <= 4
+```
+
+To prevent Player from ballooning to unreasonable scale, PlayerTrait was created. PlayerTrait allows for the creation of arbitrary player attributes, anything from a name to a status effect.
+
+Following the creating and finalization of the preceding classes, the rest of the team was assigned to various tasks to build upon the foundation I laid out. The breakdown is as follows:
+
+Michael
+    ⤷ ScoreManager
+    ⤷ Menu
+    ⤷ Events
+Ryan
+    ⤷ Menu
+    ⤷ Score
+    ⤷ Game
+Levi
+    ⤷ Game
+    ⤷ Identifier
+    ⤷ Name
+Orion
+    ⤷ DiceCode
+Bruce
+    ⤷ Coord
+    ⤷ Player
+    ⤷ Square
+    ⤷ Board
+    ⤷ Identifier
+    ⤷ Color
+    ⤷ PlayerTrait
+    ⤷ RuleSet
+
+Most classes were built in parallel, with Game, of course, being finalized last. With the functional completion of Game, I went back in and cleaned up the UX and implemented the auto play function. 
 
 
 ## Trait System
