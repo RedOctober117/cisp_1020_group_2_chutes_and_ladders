@@ -38,7 +38,7 @@ Bruce
     ⤷ PlayerTrait
     ⤷ RuleSet
 ```
-Most classes were built in parallel, with Game, of course, being finalized last. With the functional completion of Game, I went back in and cleaned up the UX and implemented the auto play function. 
+Most classes were built in parallel, with Game, of course, being finalized last. With the functional completion of Game, I went back in and cleaned up the UX and implemented the auto play function. Much of the proceeding information, with the exception of Trait System, is out of date, but kept for posterities sake. 
 
 
 ## Trait System
